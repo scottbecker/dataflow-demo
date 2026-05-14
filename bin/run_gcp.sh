@@ -2,7 +2,7 @@
 
 # --- Configuration ---
 PROJECT_ID="maps-346818"
-REGION="us-east1"
+ZONE="us-east1-b"
 # We use the bucket identified in the previous run
 BUCKET="gcp_dataflow_test"
 # ---------------------
@@ -23,7 +23,7 @@ source "$PROJECT_DIR/.venv/bin/activate"
 
 echo "Submitting WordCount job to Google Cloud Dataflow..."
 echo "Project: $PROJECT_ID"
-echo "Region:  $REGION"
+echo "Zone:    $ZONE"
 echo "Runner:  DataflowRunner (Dataflow Prime enabled)"
 
 # Run the pipeline
@@ -31,7 +31,7 @@ echo "Runner:  DataflowRunner (Dataflow Prime enabled)"
 python3 "$PROJECT_DIR/word_count.py" \
     --runner DataflowRunner \
     --project "$PROJECT_ID" \
-    --region "$REGION" \
+    --zone "$ZONE" \
     --temp_location "gs://$BUCKET/temp/" \
     --staging_location "gs://$BUCKET/staging/" \
     --output "gs://$BUCKET/results/outputs" \

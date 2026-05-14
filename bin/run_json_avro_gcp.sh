@@ -2,7 +2,7 @@
 
 # --- Configuration ---
 PROJECT_ID="maps-346818"
-REGION="us-east1"
+ZONE="us-east1-b"
 BUCKET="dataflow_demo_data"
 # ---------------------
 
@@ -19,7 +19,7 @@ echo "Submitting JSON to Avro job to Dataflow..."
 python3 "$PROJECT_DIR/json_to_avro.py" \
     --runner DataflowRunner \
     --project "$PROJECT_ID" \
-    --region "$REGION" \
+    --zone "$ZONE" \
     --temp_location "gs://$BUCKET/temp/" \
     --staging_location "gs://$BUCKET/staging/" \
     --input "$INPUT" \

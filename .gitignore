@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+*.pyc
+*.avro
+outputs-*
+local_output_avro*
+processed/

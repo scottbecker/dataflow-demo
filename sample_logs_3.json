@@ -1,0 +1,2 @@
+{"timestamp": "2026-05-14T11:10:22Z", "level": "ERROR", "message": "Critical: Out of memory", "user_id": 0, "ip_address": "10.0.0.5"}
+{"timestamp": "2026-05-14T11:12:45Z", "level": "ERROR", "message": "Service 'auth-v1' crashed", "user_id": 999, "ip_address": "10.0.0.10"}

@@ -1,0 +1,2 @@
+{"timestamp": "2026-05-14T11:20:00Z", "level": "INFO", "message": "Password changed", "user_id": 101, "ip_address": "192.168.1.10"}
+{"timestamp": "2026-05-14T11:25:30Z", "level": "INFO", "message": "API key rotated", "user_id": 202, "ip_address": "172.16.0.5"}

@@ -22,6 +22,20 @@ AVRO_SCHEMA = {
 }
 
 def run(argv=None):
+    # Set up cleaner logging
+    logging.basicConfig(
+        level=logging.WARNING,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+    # Set our application logger to INFO
+    logger = logging.getLogger('pipeline')
+    logger.setLevel(logging.INFO)
+    
+    # Silence specific noisy beam internal loggers
+    logging.getLogger('apache_beam.runners').setLevel(logging.WARNING)
+    logging.getLogger('apache_beam.io.gcp').setLevel(logging.WARNING)
+    logging.getLogger('apache_beam.io.filebasedsink').setLevel(logging.WARNING)
+
     parser = argparse.ArgumentParser()
     parser.add_argument(
         '--input',
@@ -40,6 +54,7 @@ def run(argv=None):
     # save_main_session is important for Dataflow workers to access global variables
     pipeline_options.view_as(SetupOptions).save_main_session = True
 
+    logger.info("Starting JSON to Avro pipeline...")
     with beam.Pipeline(options=pipeline_options) as p:
         (
             p
@@ -53,7 +68,7 @@ def run(argv=None):
                 file_name_suffix='.avro'
             )
         )
+    logger.info("Pipeline completed successfully.")
 
 if __name__ == '__main__':
-    logging.getLogger().setLevel(logging.INFO)
     run()

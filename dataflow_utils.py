@@ -1,8 +1,10 @@
 import logging
 
+logger = logging.getLogger('pipeline')
+
 def log_and_return(record):
     """A simple utility function to demonstrate multi-file packaging."""
-    logging.info(f"Processing record for user: {record.get('user_id')}")
+    logger.info(f"Processing record for user: {record.get('user_id')}")
     return record
 
 def validate_record(record):

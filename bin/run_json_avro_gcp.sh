@@ -25,7 +25,6 @@ python3 "$PROJECT_DIR/json_to_avro.py" \
     --input "$INPUT" \
     --output "$OUTPUT" \
     --setup_file "$PROJECT_DIR/setup.py" \
-    --machine_type e2-medium \
     --save_main_session
 
 echo "Job submitted. Check Dataflow console."

@@ -67,8 +67,13 @@ gcloud compute ssh "$MASTER_NODE" --zone="$ZONE" --command "
         echo 'Flink cluster is already running with correct config.'
     fi
 
-    # Install dependencies
-    pip install --user --break-system-packages apache-beam[gcp] fastavro
+    # Install dependencies only if missing
+    if ! python3 -c \"import apache_beam, fastavro\" 2>/dev/null; then
+        echo 'Installing missing dependencies...'
+        pip install --user --break-system-packages apache-beam[gcp] fastavro
+    else
+        echo 'Dependencies already satisfied.'
+    fi
     
     # Run the pipeline using the Flink runner pointing to the master node name
     export PATH=\$PATH:\$HOME/.local/bin

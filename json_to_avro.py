@@ -36,6 +36,9 @@ def run(argv=None):
     
     known_args, pipeline_args = parser.parse_known_args(argv)
 
+    # Add Dataflow Prime experiment
+    pipeline_args.extend(["--experiments", "enable_prime"])
+
     pipeline_options = PipelineOptions(pipeline_args)
     # save_main_session is important for Dataflow workers to access global variables
     pipeline_options.view_as(SetupOptions).save_main_session = True

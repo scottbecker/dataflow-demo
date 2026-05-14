@@ -43,20 +43,21 @@ gcloud compute scp "$PROJECT_DIR/json_to_avro.py" "$PROJECT_DIR/dataflow_utils.p
 
 echo "Running job on master node..."
 gcloud compute ssh "$MASTER_NODE" --zone="$ZONE" --command "
-    # Set up environment
-    if [ ! -d \"venv_beam\" ]; then
-        python3 -m venv venv_beam
-        source venv_beam/bin/activate
-        pip install apache-beam[gcp] fastavro
-    else
-        source venv_beam/bin/activate
+    # Ensure Flink is started
+    if ! pgrep -f standalonesession > /dev/null; then
+        echo 'Starting Flink standalone cluster...'
+        sudo /usr/lib/flink/bin/start-cluster.sh
+        sleep 10
     fi
+
+    # Install dependencies
+    pip install --user --break-system-packages apache-beam[gcp] fastavro
     
-    # Run the pipeline using the Flink runner pointing to localhost
-    # We use --flink_master=localhost:8081 because we are on the master node
+    # Run the pipeline using the Flink runner pointing to the master node name
+    export PATH=\$PATH:\$HOME/.local/bin
     python3 json_to_avro.py \
         --runner FlinkRunner \
-        --flink_master localhost:8081 \
+        --flink_master $MASTER_NODE:8081 \
         --input $INPUT \
         --output $OUTPUT \
         --save_main_session

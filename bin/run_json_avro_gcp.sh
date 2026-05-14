@@ -2,8 +2,8 @@
 
 # --- Configuration ---
 PROJECT_ID="maps-346818"
-REGION="us-east1"
-ZONE="us-east1-d"
+REGION="us-central1"
+ZONE="us-central1-a"
 BUCKET="dataflow_demo_data"
 # ---------------------
 

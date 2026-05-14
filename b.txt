@@ -1,0 +1,1099 @@
+Output: Submitting JSON to Avro job to Dataproc Flink cluster (flink-mini-cluster)...
+Staging files to master node...
+json_to_avro.py                                                                                100% 1871    57.6KB/s   00:00    
+dataflow_utils.py                                                                              100%  424    13.0KB/s   00:00    
+Running job on master node...
+Existing host keys found in /home/scott/.ssh/google_compute_known_hosts
+Restarting Flink standalone cluster with new config...
+Stopping taskexecutor daemon (pid: 15953) on host flink-mini-cluster-m.
+Stopping standalonesession daemon (pid: 15606) on host flink-mini-cluster-m.
+Starting cluster.
+Starting standalonesession daemon on host flink-mini-cluster-m.
+Starting taskexecutor daemon on host flink-mini-cluster-m.
+Requirement already satisfied: apache-beam[gcp] in ./.local/lib/python3.11/site-packages (2.73.0)
+Requirement already satisfied: fastavro in ./.local/lib/python3.11/site-packages (1.12.2)
+Requirement already satisfied: cryptography<48.0.0,>=39.0.0 in ./.local/lib/python3.11/site-packages (from apache-beam[gcp]) (47.0.0)
+Requirement already satisfied: envoy-data-plane<2,>=1.0.3 in ./.local/lib/python3.11/site-packages (from apache-beam[gcp]) (1.0.3)
+Requirement already satisfied: fasteners<1.0,>=0.3 in ./.local/lib/python3.11/site-packages (from apache-beam[gcp]) (0.20)
+Requirement already satisfied: grpcio!=1.48.0,!=1.59.*,!=1.60.*,!=1.61.*,!=1.62.0,!=1.62.1,!=1.66.*,!=1.67.*,!=1.68.*,!=1.69.*,!=1.70.*,<2,>=1.33.1 in ./.local/lib/python3.11/site-packages (from apache-beam[gcp]) (1.80.0)
+Requirement already satisfied: httplib2<0.32.0,>=0.8 in /usr/lib/python3/dist-packages (from apache-beam[gcp]) (0.20.4)
+Requirement already satisfied: jsonpickle<4.0.0,>=3.0.0 in ./.local/lib/python3.11/site-packages (from apache-beam[gcp]) (3.4.2)
+Requirement already satisfied: numpy<2.5.0,>=1.14.3 in /usr/lib/python3/dist-packages (from apache-beam[gcp]) (1.24.2)
+Requirement already satisfied: objsize<0.8.0,>=0.6.1 in ./.local/lib/python3.11/site-packages (from apache-beam[gcp]) (0.7.1)
+Requirement already satisfied: packaging>=22.0 in ./.local/lib/python3.11/site-packages (from apache-beam[gcp]) (26.2)
+Requirement already satisfied: pillow<13,>=12.1.1 in ./.local/lib/python3.11/site-packages (from apache-beam[gcp]) (12.2.0)
+Requirement already satisfied: pymongo<5.0.0,>=3.8.0 in ./.local/lib/python3.11/site-packages (from apache-beam[gcp]) (4.17.0)
+Requirement already satisfied: proto-plus<2,>=1.7.1 in ./.local/lib/python3.11/site-packages (from apache-beam[gcp]) (1.28.0)
+Requirement already satisfied: protobuf!=4.0.*,!=4.21.*,!=4.22.0,!=4.23.*,!=4.24.*,<7.0.0.dev0,>=3.20.3 in ./.local/lib/python3.11/site-packages (from apache-beam[gcp]) (6.33.6)
+Requirement already satisfied: python-dateutil<3,>=2.8.0 in ./.local/lib/python3.11/site-packages (from apache-beam[gcp]) (2.9.0.post0)
+Requirement already satisfied: pytz>=2018.3 in /usr/lib/python3/dist-packages (from apache-beam[gcp]) (2022.7.1)
+Requirement already satisfied: requests<3.0.0,>=2.32.4 in ./.local/lib/python3.11/site-packages (from apache-beam[gcp]) (2.34.1)
+Requirement already satisfied: sortedcontainers>=2.4.0 in ./.local/lib/python3.11/site-packages (from apache-beam[gcp]) (2.4.0)
+Requirement already satisfied: typing-extensions>=3.7.0 in ./.local/lib/python3.11/site-packages (from apache-beam[gcp]) (4.15.0)
+Requirement already satisfied: zstandard<1,>=0.18.0 in ./.local/lib/python3.11/site-packages (from apache-beam[gcp]) (0.25.0)
+Requirement already satisfied: pyyaml<7.0.0,>=3.12 in /usr/lib/python3/dist-packages (from apache-beam[gcp]) (6.0)
+Requirement already satisfied: beartype<0.23.0,>=0.21.0 in ./.local/lib/python3.11/site-packages (from apache-beam[gcp]) (0.22.9)
+Requirement already satisfied: pyarrow<24.0.0,>=6.0.1 in ./.local/lib/python3.11/site-packages (from apache-beam[gcp]) (23.0.1)
+Requirement already satisfied: pyarrow-hotfix<1 in ./.local/lib/python3.11/site-packages (from apache-beam[gcp]) (0.7)
+Requirement already satisfied: cachetools<7,>=3.1.0 in ./.local/lib/python3.11/site-packages (from apache-beam[gcp]) (6.2.6)
+Requirement already satisfied: google-api-core<3,>=2.0.0 in ./.local/lib/python3.11/site-packages (from apache-beam[gcp]) (2.30.3)
+Requirement already satisfied: google-apitools<0.5.32,>=0.5.31 in ./.local/lib/python3.11/site-packages (from apache-beam[gcp]) (0.5.31)
+Requirement already satisfied: google-auth<3,>=1.18.0 in ./.local/lib/python3.11/site-packages (from apache-beam[gcp]) (2.52.0)
+Requirement already satisfied: google-auth-httplib2<0.3.0,>=0.1.0 in ./.local/lib/python3.11/site-packages (from apache-beam[gcp]) (0.2.1)
+Requirement already satisfied: google-cloud-datastore<3,>=2.0.0 in ./.local/lib/python3.11/site-packages (from apache-beam[gcp]) (2.24.0)
+Requirement already satisfied: google-cloud-pubsub<3,>=2.1.0 in ./.local/lib/python3.11/site-packages (from apache-beam[gcp]) (2.38.0)
+Requirement already satisfied: google-cloud-storage<3,>=2.18.2 in ./.local/lib/python3.11/site-packages (from apache-beam[gcp]) (2.19.0)
+Requirement already satisfied: google-cloud-bigquery<4,>=2.0.0 in ./.local/lib/python3.11/site-packages (from apache-beam[gcp]) (3.41.0)
+Requirement already satisfied: google-cloud-bigquery-storage<3,>=2.6.3 in ./.local/lib/python3.11/site-packages (from apache-beam[gcp]) (2.38.0)
+Requirement already satisfied: google-cloud-core<3,>=2.0.0 in ./.local/lib/python3.11/site-packages (from apache-beam[gcp]) (2.6.0)
+Requirement already satisfied: google-cloud-bigtable<3,>=2.19.0 in ./.local/lib/python3.11/site-packages (from apache-beam[gcp]) (2.38.0)
+Requirement already satisfied: google-cloud-build<4,>=3.35.0 in ./.local/lib/python3.11/site-packages (from apache-beam[gcp]) (3.36.0)
+Requirement already satisfied: google-cloud-spanner<4,>=3.0.0 in ./.local/lib/python3.11/site-packages (from apache-beam[gcp]) (3.66.0)
+Requirement already satisfied: google-cloud-dlp<4,>=3.0.0 in ./.local/lib/python3.11/site-packages (from apache-beam[gcp]) (3.36.0)
+Requirement already satisfied: google-cloud-kms<4,>=3.0.0 in ./.local/lib/python3.11/site-packages (from apache-beam[gcp]) (3.13.0)
+Requirement already satisfied: google-cloud-language<3,>=2.0 in ./.local/lib/python3.11/site-packages (from apache-beam[gcp]) (2.20.0)
+Requirement already satisfied: google-cloud-secret-manager<3,>=2.0 in ./.local/lib/python3.11/site-packages (from apache-beam[gcp]) (2.28.0)
+Requirement already satisfied: google-cloud-videointelligence<3,>=2.0 in ./.local/lib/python3.11/site-packages (from apache-beam[gcp]) (2.19.0)
+Requirement already satisfied: google-cloud-vision<4,>=2 in ./.local/lib/python3.11/site-packages (from apache-beam[gcp]) (3.14.0)
+Requirement already satisfied: google-cloud-recommendations-ai<0.11.0,>=0.1.0 in ./.local/lib/python3.11/site-packages (from apache-beam[gcp]) (0.10.18)
+Requirement already satisfied: google-cloud-aiplatform<2.0,>=1.26.0 in ./.local/lib/python3.11/site-packages (from apache-beam[gcp]) (1.152.0)
+Requirement already satisfied: cloud-sql-python-connector<2.0.0,>=1.18.2 in ./.local/lib/python3.11/site-packages (from apache-beam[gcp]) (1.20.2)
+Requirement already satisfied: python-tds>=1.16.1 in ./.local/lib/python3.11/site-packages (from apache-beam[gcp]) (1.17.1)
+Requirement already satisfied: pg8000>=1.31.5 in ./.local/lib/python3.11/site-packages (from apache-beam[gcp]) (1.31.5)
+Requirement already satisfied: PyMySQL>=1.1.0 in ./.local/lib/python3.11/site-packages (from apache-beam[gcp]) (1.1.3)
+Requirement already satisfied: keyrings.google-artifactregistry-auth in ./.local/lib/python3.11/site-packages (from apache-beam[gcp]) (1.1.2)
+Requirement already satisfied: orjson<4,>=3.9.7 in ./.local/lib/python3.11/site-packages (from apache-beam[gcp]) (3.11.9)
+Requirement already satisfied: regex>=2020.6.8 in ./.local/lib/python3.11/site-packages (from apache-beam[gcp]) (2026.5.9)
+Requirement already satisfied: aiofiles in ./.local/lib/python3.11/site-packages (from cloud-sql-python-connector<2.0.0,>=1.18.2->apache-beam[gcp]) (25.1.0)
+Requirement already satisfied: aiohttp in ./.local/lib/python3.11/site-packages (from cloud-sql-python-connector<2.0.0,>=1.18.2->apache-beam[gcp]) (3.13.5)
+Requirement already satisfied: dnspython>=2.0.0 in ./.local/lib/python3.11/site-packages (from cloud-sql-python-connector<2.0.0,>=1.18.2->apache-beam[gcp]) (2.8.0)
+Requirement already satisfied: cffi>=2.0.0 in ./.local/lib/python3.11/site-packages (from cryptography<48.0.0,>=39.0.0->apache-beam[gcp]) (2.0.0)
+Requirement already satisfied: betterproto==2.0.0b6 in ./.local/lib/python3.11/site-packages (from envoy-data-plane<2,>=1.0.3->apache-beam[gcp]) (2.0.0b6)
+Requirement already satisfied: grpcio-tools<2.0,>=1.67 in ./.local/lib/python3.11/site-packages (from envoy-data-plane<2,>=1.0.3->apache-beam[gcp]) (1.80.0)
+Requirement already satisfied: grpclib<0.5.0,>=0.4.1 in ./.local/lib/python3.11/site-packages (from betterproto==2.0.0b6->envoy-data-plane<2,>=1.0.3->apache-beam[gcp]) (0.4.9)
+Requirement already satisfied: googleapis-common-protos<2.0.0,>=1.63.2 in ./.local/lib/python3.11/site-packages (from google-api-core<3,>=2.0.0->apache-beam[gcp]) (1.75.0)
+Requirement already satisfied: oauth2client>=1.4.12 in ./.local/lib/python3.11/site-packages (from google-apitools<0.5.32,>=0.5.31->apache-beam[gcp]) (4.1.3)
+Requirement already satisfied: six>=1.12.0 in /usr/lib/python3/dist-packages (from google-apitools<0.5.32,>=0.5.31->apache-beam[gcp]) (1.16.0)
+Requirement already satisfied: pyasn1-modules>=0.2.1 in ./.local/lib/python3.11/site-packages (from google-auth<3,>=1.18.0->apache-beam[gcp]) (0.4.2)
+Requirement already satisfied: google-cloud-resource-manager<3.0.0,>=1.3.3 in ./.local/lib/python3.11/site-packages (from google-cloud-aiplatform<2.0,>=1.26.0->apache-beam[gcp]) (1.17.0)
+Requirement already satisfied: google-genai<2.0.0,>=1.75.0 in ./.local/lib/python3.11/site-packages (from google-cloud-aiplatform<2.0,>=1.26.0->apache-beam[gcp]) (1.75.0)
+Requirement already satisfied: pydantic<3 in ./.local/lib/python3.11/site-packages (from google-cloud-aiplatform<2.0,>=1.26.0->apache-beam[gcp]) (2.13.4)
+Requirement already satisfied: docstring-parser<1 in ./.local/lib/python3.11/site-packages (from google-cloud-aiplatform<2.0,>=1.26.0->apache-beam[gcp]) (0.18.0)
+Requirement already satisfied: google-resumable-media<3.0.0,>=2.0.0 in ./.local/lib/python3.11/site-packages (from google-cloud-bigquery<4,>=2.0.0->apache-beam[gcp]) (2.9.0)
+Requirement already satisfied: grpc-google-iam-v1<1.0.0,>=0.12.4 in ./.local/lib/python3.11/site-packages (from google-cloud-bigtable<3,>=2.19.0->apache-beam[gcp]) (0.14.4)
+Requirement already satisfied: google-crc32c<2.0.0dev,>=1.5.0 in ./.local/lib/python3.11/site-packages (from google-cloud-bigtable<3,>=2.19.0->apache-beam[gcp]) (1.8.0)
+Requirement already satisfied: grpcio-status>=1.33.2 in ./.local/lib/python3.11/site-packages (from google-cloud-pubsub<3,>=2.1.0->apache-beam[gcp]) (1.80.0)
+Requirement already satisfied: opentelemetry-api>=1.27.0 in ./.local/lib/python3.11/site-packages (from google-cloud-pubsub<3,>=2.1.0->apache-beam[gcp]) (1.41.1)
+Requirement already satisfied: opentelemetry-sdk>=1.27.0 in ./.local/lib/python3.11/site-packages (from google-cloud-pubsub<3,>=2.1.0->apache-beam[gcp]) (1.41.1)
+Requirement already satisfied: sqlparse>=0.4.4 in ./.local/lib/python3.11/site-packages (from google-cloud-spanner<4,>=3.0.0->apache-beam[gcp]) (0.5.5)
+Requirement already satisfied: grpc-interceptor>=0.15.4 in ./.local/lib/python3.11/site-packages (from google-cloud-spanner<4,>=3.0.0->apache-beam[gcp]) (0.15.4)
+Requirement already satisfied: opentelemetry-semantic-conventions>=0.43b0 in ./.local/lib/python3.11/site-packages (from google-cloud-spanner<4,>=3.0.0->apache-beam[gcp]) (0.62b1)
+Requirement already satisfied: opentelemetry-resourcedetector-gcp>=1.8.0a0 in ./.local/lib/python3.11/site-packages (from google-cloud-spanner<4,>=3.0.0->apache-beam[gcp]) (1.12.0a0)
+Requirement already satisfied: google-cloud-monitoring>=2.16.0 in ./.local/lib/python3.11/site-packages (from google-cloud-spanner<4,>=3.0.0->apache-beam[gcp]) (2.30.0)
+Requirement already satisfied: mmh3>=4.1.0 in ./.local/lib/python3.11/site-packages (from google-cloud-spanner<4,>=3.0.0->apache-beam[gcp]) (5.2.1)
+Requirement already satisfied: pyparsing!=3.0.0,!=3.0.1,!=3.0.2,!=3.0.3,<4,>=2.4.2 in /usr/lib/python3/dist-packages (from httplib2<0.32.0,>=0.8->apache-beam[gcp]) (3.0.9)
+Requirement already satisfied: scramp>=1.4.5 in ./.local/lib/python3.11/site-packages (from pg8000>=1.31.5->apache-beam[gcp]) (1.4.8)
+Requirement already satisfied: charset_normalizer<4,>=2 in /usr/lib/python3/dist-packages (from requests<3.0.0,>=2.32.4->apache-beam[gcp]) (3.0.1)
+Requirement already satisfied: idna<4,>=2.5 in /usr/lib/python3/dist-packages (from requests<3.0.0,>=2.32.4->apache-beam[gcp]) (3.3)
+Requirement already satisfied: urllib3<3,>=1.26 in /usr/lib/python3/dist-packages (from requests<3.0.0,>=2.32.4->apache-beam[gcp]) (1.26.12)
+Requirement already satisfied: certifi>=2023.5.7 in ./.local/lib/python3.11/site-packages (from requests<3.0.0,>=2.32.4->apache-beam[gcp]) (2026.4.22)
+Requirement already satisfied: keyring in ./.local/lib/python3.11/site-packages (from keyrings.google-artifactregistry-auth->apache-beam[gcp]) (25.7.0)
+Requirement already satisfied: pluggy in ./.local/lib/python3.11/site-packages (from keyrings.google-artifactregistry-auth->apache-beam[gcp]) (1.6.0)
+Requirement already satisfied: pycparser in ./.local/lib/python3.11/site-packages (from cffi>=2.0.0->cryptography<48.0.0,>=39.0.0->apache-beam[gcp]) (3.0)
+Requirement already satisfied: anyio<5.0.0,>=4.8.0 in ./.local/lib/python3.11/site-packages (from google-genai<2.0.0,>=1.75.0->google-cloud-aiplatform<2.0,>=1.26.0->apache-beam[gcp]) (4.13.0)
+Requirement already satisfied: httpx<1.0.0,>=0.28.1 in ./.local/lib/python3.11/site-packages (from google-genai<2.0.0,>=1.75.0->google-cloud-aiplatform<2.0,>=1.26.0->apache-beam[gcp]) (0.28.1)
+Requirement already satisfied: tenacity<9.2.0,>=8.2.3 in ./.local/lib/python3.11/site-packages (from google-genai<2.0.0,>=1.75.0->google-cloud-aiplatform<2.0,>=1.26.0->apache-beam[gcp]) (9.1.4)
+Requirement already satisfied: websockets<17.0,>=13.0.0 in ./.local/lib/python3.11/site-packages (from google-genai<2.0.0,>=1.75.0->google-cloud-aiplatform<2.0,>=1.26.0->apache-beam[gcp]) (16.0)
+Requirement already satisfied: distro<2,>=1.7.0 in /usr/lib/python3/dist-packages (from google-genai<2.0.0,>=1.75.0->google-cloud-aiplatform<2.0,>=1.26.0->apache-beam[gcp]) (1.8.0)
+Requirement already satisfied: sniffio in ./.local/lib/python3.11/site-packages (from google-genai<2.0.0,>=1.75.0->google-cloud-aiplatform<2.0,>=1.26.0->apache-beam[gcp]) (1.3.1)
+Requirement already satisfied: setuptools>=77.0.1 in ./.local/lib/python3.11/site-packages (from grpcio-tools<2.0,>=1.67->envoy-data-plane<2,>=1.0.3->apache-beam[gcp]) (82.0.1)
+Requirement already satisfied: pyasn1>=0.1.7 in ./.local/lib/python3.11/site-packages (from oauth2client>=1.4.12->google-apitools<0.5.32,>=0.5.31->apache-beam[gcp]) (0.6.3)
+Requirement already satisfied: rsa>=3.1.4 in ./.local/lib/python3.11/site-packages (from oauth2client>=1.4.12->google-apitools<0.5.32,>=0.5.31->apache-beam[gcp]) (4.9.1)
+Requirement already satisfied: importlib-metadata<8.8.0,>=6.0 in ./.local/lib/python3.11/site-packages (from opentelemetry-api>=1.27.0->google-cloud-pubsub<3,>=2.1.0->apache-beam[gcp]) (8.7.1)
+Requirement already satisfied: annotated-types>=0.6.0 in ./.local/lib/python3.11/site-packages (from pydantic<3->google-cloud-aiplatform<2.0,>=1.26.0->apache-beam[gcp]) (0.7.0)
+Requirement already satisfied: pydantic-core==2.46.4 in ./.local/lib/python3.11/site-packages (from pydantic<3->google-cloud-aiplatform<2.0,>=1.26.0->apache-beam[gcp]) (2.46.4)
+Requirement already satisfied: typing-inspection>=0.4.2 in ./.local/lib/python3.11/site-packages (from pydantic<3->google-cloud-aiplatform<2.0,>=1.26.0->apache-beam[gcp]) (0.4.2)
+Requirement already satisfied: asn1crypto>=1.5.1 in ./.local/lib/python3.11/site-packages (from scramp>=1.4.5->pg8000>=1.31.5->apache-beam[gcp]) (1.5.1)
+Requirement already satisfied: aiohappyeyeballs>=2.5.0 in ./.local/lib/python3.11/site-packages (from aiohttp->cloud-sql-python-connector<2.0.0,>=1.18.2->apache-beam[gcp]) (2.6.1)
+Requirement already satisfied: aiosignal>=1.4.0 in ./.local/lib/python3.11/site-packages (from aiohttp->cloud-sql-python-connector<2.0.0,>=1.18.2->apache-beam[gcp]) (1.4.0)
+Requirement already satisfied: attrs>=17.3.0 in ./.local/lib/python3.11/site-packages (from aiohttp->cloud-sql-python-connector<2.0.0,>=1.18.2->apache-beam[gcp]) (26.1.0)
+Requirement already satisfied: frozenlist>=1.1.1 in ./.local/lib/python3.11/site-packages (from aiohttp->cloud-sql-python-connector<2.0.0,>=1.18.2->apache-beam[gcp]) (1.8.0)
+Requirement already satisfied: multidict<7.0,>=4.5 in ./.local/lib/python3.11/site-packages (from aiohttp->cloud-sql-python-connector<2.0.0,>=1.18.2->apache-beam[gcp]) (6.7.1)
+Requirement already satisfied: propcache>=0.2.0 in ./.local/lib/python3.11/site-packages (from aiohttp->cloud-sql-python-connector<2.0.0,>=1.18.2->apache-beam[gcp]) (0.5.2)
+Requirement already satisfied: yarl<2.0,>=1.17.0 in ./.local/lib/python3.11/site-packages (from aiohttp->cloud-sql-python-connector<2.0.0,>=1.18.2->apache-beam[gcp]) (1.23.0)
+Requirement already satisfied: SecretStorage>=3.2 in ./.local/lib/python3.11/site-packages (from keyring->keyrings.google-artifactregistry-auth->apache-beam[gcp]) (3.5.0)
+Requirement already satisfied: jeepney>=0.4.2 in ./.local/lib/python3.11/site-packages (from keyring->keyrings.google-artifactregistry-auth->apache-beam[gcp]) (0.9.0)
+Requirement already satisfied: jaraco.classes in ./.local/lib/python3.11/site-packages (from keyring->keyrings.google-artifactregistry-auth->apache-beam[gcp]) (3.4.0)
+Requirement already satisfied: jaraco.functools in ./.local/lib/python3.11/site-packages (from keyring->keyrings.google-artifactregistry-auth->apache-beam[gcp]) (4.4.0)
+Requirement already satisfied: jaraco.context in ./.local/lib/python3.11/site-packages (from keyring->keyrings.google-artifactregistry-auth->apache-beam[gcp]) (6.1.2)
+Requirement already satisfied: h2<5,>=3.1.0 in ./.local/lib/python3.11/site-packages (from grpclib<0.5.0,>=0.4.1->betterproto==2.0.0b6->envoy-data-plane<2,>=1.0.3->apache-beam[gcp]) (4.3.0)
+Requirement already satisfied: httpcore==1.* in ./.local/lib/python3.11/site-packages (from httpx<1.0.0,>=0.28.1->google-genai<2.0.0,>=1.75.0->google-cloud-aiplatform<2.0,>=1.26.0->apache-beam[gcp]) (1.0.9)
+Requirement already satisfied: h11>=0.16 in ./.local/lib/python3.11/site-packages (from httpcore==1.*->httpx<1.0.0,>=0.28.1->google-genai<2.0.0,>=1.75.0->google-cloud-aiplatform<2.0,>=1.26.0->apache-beam[gcp]) (0.16.0)
+Requirement already satisfied: zipp>=3.20 in ./.local/lib/python3.11/site-packages (from importlib-metadata<8.8.0,>=6.0->opentelemetry-api>=1.27.0->google-cloud-pubsub<3,>=2.1.0->apache-beam[gcp]) (3.23.1)
+Requirement already satisfied: more-itertools in ./.local/lib/python3.11/site-packages (from jaraco.classes->keyring->keyrings.google-artifactregistry-auth->apache-beam[gcp]) (11.0.2)
+Requirement already satisfied: backports.tarfile in ./.local/lib/python3.11/site-packages (from jaraco.context->keyring->keyrings.google-artifactregistry-auth->apache-beam[gcp]) (1.2.0)
+Requirement already satisfied: hyperframe<7,>=6.1 in ./.local/lib/python3.11/site-packages (from h2<5,>=3.1.0->grpclib<0.5.0,>=0.4.1->betterproto==2.0.0b6->envoy-data-plane<2,>=1.0.3->apache-beam[gcp]) (6.1.0)
+Requirement already satisfied: hpack<5,>=4.1 in ./.local/lib/python3.11/site-packages (from h2<5,>=3.1.0->grpclib<0.5.0,>=0.4.1->betterproto==2.0.0b6->envoy-data-plane<2,>=1.0.3->apache-beam[gcp]) (4.1.0)
+INFO:apache_beam.io.iobase:*** WriteImpl min_shards undef so it's 1, and we write per Bundle
+INFO:apache_beam.runners.portability.flink_runner:Adding HTTP protocol scheme to flink_master parameter: http://flink-mini-cluster-m:8081
+INFO:apache_beam.utils.subprocess_server:Using cached job server jar from https://repo.maven.apache.org/maven2/org/apache/beam/beam-runners-flink-1.20-job-server/2.73.0/beam-runners-flink-1.20-job-server-2.73.0.jar
+INFO:apache_beam.utils.subprocess_server:Starting service with ('java' '-jar' '/home/scott/.apache_beam/cache/jars/beam-runners-flink-1.20-job-server-2.73.0.jar' '--flink-master' 'http://flink-mini-cluster-m:8081' '--artifacts-dir' '/tmp/beam-temp0f6wj6qx/artifacts6ysv2rr6' '--job-port' '48107' '--artifact-port' '0' '--expansion-port' '0')
+INFO:FlinkJarJobServer:SLF4J(W): Class path contains multiple SLF4J providers.
+INFO:FlinkJarJobServer:SLF4J(W): Found provider [org.slf4j.jul.JULServiceProvider@6b2fad11]
+INFO:FlinkJarJobServer:SLF4J(W): Found provider [org.slf4j.simple.SimpleServiceProvider@79698539]
+INFO:FlinkJarJobServer:SLF4J(W): See https://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+INFO:FlinkJarJobServer:SLF4J(I): Actual provider is of type [org.slf4j.jul.JULServiceProvider@6b2fad11]
+INFO:FlinkJarJobServer:May 14, 2026 4:35:39 PM software.amazon.awssdk.regions.internal.util.EC2MetadataUtils getItems
+INFO:FlinkJarJobServer:WARNING: Unable to retrieve the requested metadata.
+INFO:FlinkJarJobServer:May 14, 2026 4:35:39 PM org.apache.beam.runners.jobsubmission.JobServerDriver createArtifactStagingService
+INFO:FlinkJarJobServer:INFO: ArtifactStagingService started on localhost:39907
+INFO:FlinkJarJobServer:May 14, 2026 4:35:40 PM org.apache.beam.runners.jobsubmission.JobServerDriver createExpansionService
+INFO:FlinkJarJobServer:INFO: Java ExpansionService started on localhost:35569
+INFO:FlinkJarJobServer:May 14, 2026 4:35:40 PM org.apache.beam.runners.jobsubmission.JobServerDriver createJobServer
+INFO:FlinkJarJobServer:INFO: JobService started on localhost:48107
+INFO:FlinkJarJobServer:May 14, 2026 4:35:40 PM org.apache.beam.runners.jobsubmission.JobServerDriver run
+INFO:FlinkJarJobServer:INFO: Job server now running, terminate with Ctrl+C
+WARNING:root:Waiting for grpc channel to be ready at localhost:48107.
+INFO:FlinkJarJobServer:May 14, 2026 4:35:40 PM org.apache.beam.runners.fnexecution.artifact.ArtifactStagingService$2 onNext
+INFO:FlinkJarJobServer:INFO: Staging artifacts for job_5676e3c3-6fb7-4b12-8ce9-30846effe758.
+INFO:FlinkJarJobServer:May 14, 2026 4:35:40 PM org.apache.beam.runners.fnexecution.artifact.ArtifactStagingService$2 resolveNextEnvironment
+INFO:FlinkJarJobServer:INFO: Resolving artifacts for job_5676e3c3-6fb7-4b12-8ce9-30846effe758.0:ref_Environment_default_environment_1.
+INFO:FlinkJarJobServer:May 14, 2026 4:35:40 PM org.apache.beam.runners.fnexecution.artifact.ArtifactStagingService$2 onNext
+INFO:FlinkJarJobServer:INFO: Getting 2 artifacts for job_5676e3c3-6fb7-4b12-8ce9-30846effe758.null.
+INFO:FlinkJarJobServer:May 14, 2026 4:35:40 PM org.apache.beam.runners.fnexecution.artifact.ArtifactStagingService$2 finishStaging
+INFO:FlinkJarJobServer:INFO: Artifacts fully staged for job_5676e3c3-6fb7-4b12-8ce9-30846effe758.
+INFO:FlinkJarJobServer:May 14, 2026 4:35:42 PM org.apache.beam.runners.flink.FlinkJobInvoker invokeWithExecutor
+INFO:FlinkJarJobServer:INFO: Invoking job BeamApp-scott-0514163541-6a1b459f_1eee78da-16df-4d7c-ada2-af7fd8d5ce1b with pipeline runner org.apache.beam.runners.flink.FlinkPipelineRunner@75df3b12
+INFO:FlinkJarJobServer:May 14, 2026 4:35:42 PM org.apache.beam.runners.jobsubmission.JobInvocation start
+INFO:FlinkJarJobServer:INFO: Starting job invocation BeamApp-scott-0514163541-6a1b459f_1eee78da-16df-4d7c-ada2-af7fd8d5ce1b
+INFO:apache_beam.runners.portability.portable_runner:Job state changed to STOPPED
+INFO:apache_beam.runners.portability.portable_runner:Job state changed to STARTING
+INFO:apache_beam.runners.portability.portable_runner:Job state changed to RUNNING
+INFO:FlinkJarJobServer:May 14, 2026 4:35:42 PM org.apache.beam.runners.flink.FlinkPipelineRunner runPipelineWithTranslator
+INFO:FlinkJarJobServer:INFO: Translating pipeline to Flink program.
+INFO:FlinkJarJobServer:May 14, 2026 4:35:42 PM org.apache.beam.runners.flink.FlinkExecutionEnvironments createBatchExecutionEnvironment
+INFO:FlinkJarJobServer:INFO: Creating a Batch Execution Environment.
+INFO:FlinkJarJobServer:May 14, 2026 4:35:42 PM org.apache.beam.runners.flink.FlinkExecutionEnvironments createBatchExecutionEnvironment
+INFO:FlinkJarJobServer:INFO: Using Flink Master URL flink-mini-cluster-m:8081.
+INFO:FlinkJarJobServer:May 14, 2026 4:35:42 PM software.amazon.awssdk.regions.internal.util.EC2MetadataUtils getItems
+INFO:FlinkJarJobServer:WARNING: Unable to retrieve the requested metadata.
+INFO:FlinkJarJobServer:May 14, 2026 4:35:44 PM org.apache.flink.api.java.utils.PlanGenerator logTypeRegistrationDetails
+INFO:FlinkJarJobServer:INFO: The job has 0 registered types and 0 default Kryo serializers
+INFO:FlinkJarJobServer:May 14, 2026 4:35:45 PM org.apache.flink.client.program.rest.RestClusterClient lambda$submitJob$7
+INFO:FlinkJarJobServer:INFO: Submitting job 'BeamApp-scott-0514163541-6a1b459f' (393f10df1931e16aad7682b582372208).
+INFO:FlinkJarJobServer:May 14, 2026 4:35:45 PM org.apache.flink.client.program.rest.RestClusterClient lambda$null$6
+INFO:FlinkJarJobServer:WARNING: Attempt to submit job 'BeamApp-scott-0514163541-6a1b459f' (393f10df1931e16aad7682b582372208) to 'http://flink-mini-cluster-m:8081' has failed.
+INFO:FlinkJarJobServer:java.util.concurrent.CompletionException: org.apache.flink.shaded.netty4.io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: flink-mini-cluster-m/10.128.0.9:8081
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:331)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:346)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture$UniCompose.tryFire(CompletableFuture.java:1063)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:506)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2094)
+INFO:FlinkJarJobServer: at org.apache.flink.runtime.rest.RestClient.lambda$submitRequest$4(RestClient.java:592)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListener0(DefaultPromise.java:590)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListeners0(DefaultPromise.java:583)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListenersNow(DefaultPromise.java:559)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListeners(DefaultPromise.java:492)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.setValue0(DefaultPromise.java:636)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.setFailure0(DefaultPromise.java:629)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.tryFailure(DefaultPromise.java:118)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.fulfillConnectPromise(AbstractNioChannel.java:321)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:337)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+INFO:FlinkJarJobServer: at java.base/java.lang.Thread.run(Thread.java:829)
+INFO:FlinkJarJobServer:Caused by: org.apache.flink.shaded.netty4.io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: flink-mini-cluster-m/10.128.0.9:8081
+INFO:FlinkJarJobServer:Caused by: java.net.ConnectException: Connection refused
+INFO:FlinkJarJobServer: at java.base/sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+INFO:FlinkJarJobServer: at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:777)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:337)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:334)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+INFO:FlinkJarJobServer: at java.base/java.lang.Thread.run(Thread.java:829)
+INFO:FlinkJarJobServer:
+INFO:FlinkJarJobServer:May 14, 2026 4:35:48 PM org.apache.flink.client.program.rest.RestClusterClient lambda$null$6
+INFO:FlinkJarJobServer:WARNING: Attempt to submit job 'BeamApp-scott-0514163541-6a1b459f' (393f10df1931e16aad7682b582372208) to 'http://flink-mini-cluster-m:8081' has failed.
+INFO:FlinkJarJobServer:java.util.concurrent.CompletionException: org.apache.flink.shaded.netty4.io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: flink-mini-cluster-m/10.128.0.9:8081
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:331)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:346)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture$UniCompose.tryFire(CompletableFuture.java:1063)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:506)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2094)
+INFO:FlinkJarJobServer: at org.apache.flink.runtime.rest.RestClient.lambda$submitRequest$4(RestClient.java:592)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListener0(DefaultPromise.java:590)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListeners0(DefaultPromise.java:583)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListenersNow(DefaultPromise.java:559)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListeners(DefaultPromise.java:492)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.setValue0(DefaultPromise.java:636)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.setFailure0(DefaultPromise.java:629)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.tryFailure(DefaultPromise.java:118)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.fulfillConnectPromise(AbstractNioChannel.java:321)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:337)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+INFO:FlinkJarJobServer: at java.base/java.lang.Thread.run(Thread.java:829)
+INFO:FlinkJarJobServer:Caused by: org.apache.flink.shaded.netty4.io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: flink-mini-cluster-m/10.128.0.9:8081
+INFO:FlinkJarJobServer:Caused by: java.net.ConnectException: Connection refused
+INFO:FlinkJarJobServer: at java.base/sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+INFO:FlinkJarJobServer: at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:777)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:337)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:334)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+INFO:FlinkJarJobServer: at java.base/java.lang.Thread.run(Thread.java:829)
+INFO:FlinkJarJobServer:
+INFO:FlinkJarJobServer:May 14, 2026 4:35:51 PM org.apache.flink.client.program.rest.RestClusterClient lambda$null$6
+INFO:FlinkJarJobServer:WARNING: Attempt to submit job 'BeamApp-scott-0514163541-6a1b459f' (393f10df1931e16aad7682b582372208) to 'http://flink-mini-cluster-m:8081' has failed.
+INFO:FlinkJarJobServer:java.util.concurrent.CompletionException: org.apache.flink.shaded.netty4.io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: flink-mini-cluster-m/10.128.0.9:8081
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:331)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:346)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture$UniCompose.tryFire(CompletableFuture.java:1063)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:506)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2094)
+INFO:FlinkJarJobServer: at org.apache.flink.runtime.rest.RestClient.lambda$submitRequest$4(RestClient.java:592)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListener0(DefaultPromise.java:590)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListeners0(DefaultPromise.java:583)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListenersNow(DefaultPromise.java:559)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListeners(DefaultPromise.java:492)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.setValue0(DefaultPromise.java:636)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.setFailure0(DefaultPromise.java:629)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.tryFailure(DefaultPromise.java:118)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.fulfillConnectPromise(AbstractNioChannel.java:321)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:337)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+INFO:FlinkJarJobServer: at java.base/java.lang.Thread.run(Thread.java:829)
+INFO:FlinkJarJobServer:Caused by: org.apache.flink.shaded.netty4.io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: flink-mini-cluster-m/10.128.0.9:8081
+INFO:FlinkJarJobServer:Caused by: java.net.ConnectException: Connection refused
+INFO:FlinkJarJobServer: at java.base/sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+INFO:FlinkJarJobServer: at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:777)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:337)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:334)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+INFO:FlinkJarJobServer: at java.base/java.lang.Thread.run(Thread.java:829)
+INFO:FlinkJarJobServer:
+INFO:FlinkJarJobServer:May 14, 2026 4:35:54 PM org.apache.flink.client.program.rest.RestClusterClient lambda$null$6
+INFO:FlinkJarJobServer:WARNING: Attempt to submit job 'BeamApp-scott-0514163541-6a1b459f' (393f10df1931e16aad7682b582372208) to 'http://flink-mini-cluster-m:8081' has failed.
+INFO:FlinkJarJobServer:java.util.concurrent.CompletionException: org.apache.flink.shaded.netty4.io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: flink-mini-cluster-m/10.128.0.9:8081
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:331)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:346)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture$UniCompose.tryFire(CompletableFuture.java:1063)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:506)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2094)
+INFO:FlinkJarJobServer: at org.apache.flink.runtime.rest.RestClient.lambda$submitRequest$4(RestClient.java:592)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListener0(DefaultPromise.java:590)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListeners0(DefaultPromise.java:583)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListenersNow(DefaultPromise.java:559)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListeners(DefaultPromise.java:492)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.setValue0(DefaultPromise.java:636)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.setFailure0(DefaultPromise.java:629)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.tryFailure(DefaultPromise.java:118)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.fulfillConnectPromise(AbstractNioChannel.java:321)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:337)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+INFO:FlinkJarJobServer: at java.base/java.lang.Thread.run(Thread.java:829)
+INFO:FlinkJarJobServer:Caused by: org.apache.flink.shaded.netty4.io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: flink-mini-cluster-m/10.128.0.9:8081
+INFO:FlinkJarJobServer:Caused by: java.net.ConnectException: Connection refused
+INFO:FlinkJarJobServer: at java.base/sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+INFO:FlinkJarJobServer: at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:777)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:337)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:334)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+INFO:FlinkJarJobServer: at java.base/java.lang.Thread.run(Thread.java:829)
+INFO:FlinkJarJobServer:
+INFO:FlinkJarJobServer:May 14, 2026 4:35:57 PM org.apache.flink.client.program.rest.RestClusterClient lambda$null$6
+INFO:FlinkJarJobServer:WARNING: Attempt to submit job 'BeamApp-scott-0514163541-6a1b459f' (393f10df1931e16aad7682b582372208) to 'http://flink-mini-cluster-m:8081' has failed.
+INFO:FlinkJarJobServer:java.util.concurrent.CompletionException: org.apache.flink.shaded.netty4.io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: flink-mini-cluster-m/10.128.0.9:8081
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:331)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:346)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture$UniCompose.tryFire(CompletableFuture.java:1063)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:506)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2094)
+INFO:FlinkJarJobServer: at org.apache.flink.runtime.rest.RestClient.lambda$submitRequest$4(RestClient.java:592)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListener0(DefaultPromise.java:590)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListeners0(DefaultPromise.java:583)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListenersNow(DefaultPromise.java:559)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListeners(DefaultPromise.java:492)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.setValue0(DefaultPromise.java:636)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.setFailure0(DefaultPromise.java:629)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.tryFailure(DefaultPromise.java:118)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.fulfillConnectPromise(AbstractNioChannel.java:321)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:337)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+INFO:FlinkJarJobServer: at java.base/java.lang.Thread.run(Thread.java:829)
+INFO:FlinkJarJobServer:Caused by: org.apache.flink.shaded.netty4.io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: flink-mini-cluster-m/10.128.0.9:8081
+INFO:FlinkJarJobServer:Caused by: java.net.ConnectException: Connection refused
+INFO:FlinkJarJobServer: at java.base/sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+INFO:FlinkJarJobServer: at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:777)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:337)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:334)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+INFO:FlinkJarJobServer: at java.base/java.lang.Thread.run(Thread.java:829)
+INFO:FlinkJarJobServer:
+INFO:FlinkJarJobServer:May 14, 2026 4:36:00 PM org.apache.flink.client.program.rest.RestClusterClient lambda$null$6
+INFO:FlinkJarJobServer:WARNING: Attempt to submit job 'BeamApp-scott-0514163541-6a1b459f' (393f10df1931e16aad7682b582372208) to 'http://flink-mini-cluster-m:8081' has failed.
+INFO:FlinkJarJobServer:java.util.concurrent.CompletionException: org.apache.flink.shaded.netty4.io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: flink-mini-cluster-m/10.128.0.9:8081
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:331)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:346)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture$UniCompose.tryFire(CompletableFuture.java:1063)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:506)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2094)
+INFO:FlinkJarJobServer: at org.apache.flink.runtime.rest.RestClient.lambda$submitRequest$4(RestClient.java:592)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListener0(DefaultPromise.java:590)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListeners0(DefaultPromise.java:583)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListenersNow(DefaultPromise.java:559)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListeners(DefaultPromise.java:492)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.setValue0(DefaultPromise.java:636)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.setFailure0(DefaultPromise.java:629)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.tryFailure(DefaultPromise.java:118)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.fulfillConnectPromise(AbstractNioChannel.java:321)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:337)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+INFO:FlinkJarJobServer: at java.base/java.lang.Thread.run(Thread.java:829)
+INFO:FlinkJarJobServer:Caused by: org.apache.flink.shaded.netty4.io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: flink-mini-cluster-m/10.128.0.9:8081
+INFO:FlinkJarJobServer:Caused by: java.net.ConnectException: Connection refused
+INFO:FlinkJarJobServer: at java.base/sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+INFO:FlinkJarJobServer: at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:777)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:337)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:334)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+INFO:FlinkJarJobServer: at java.base/java.lang.Thread.run(Thread.java:829)
+INFO:FlinkJarJobServer:
+INFO:FlinkJarJobServer:May 14, 2026 4:36:03 PM org.apache.flink.client.program.rest.RestClusterClient lambda$null$6
+INFO:FlinkJarJobServer:WARNING: Attempt to submit job 'BeamApp-scott-0514163541-6a1b459f' (393f10df1931e16aad7682b582372208) to 'http://flink-mini-cluster-m:8081' has failed.
+INFO:FlinkJarJobServer:java.util.concurrent.CompletionException: org.apache.flink.shaded.netty4.io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: flink-mini-cluster-m/10.128.0.9:8081
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:331)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:346)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture$UniCompose.tryFire(CompletableFuture.java:1063)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:506)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2094)
+INFO:FlinkJarJobServer: at org.apache.flink.runtime.rest.RestClient.lambda$submitRequest$4(RestClient.java:592)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListener0(DefaultPromise.java:590)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListeners0(DefaultPromise.java:583)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListenersNow(DefaultPromise.java:559)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListeners(DefaultPromise.java:492)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.setValue0(DefaultPromise.java:636)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.setFailure0(DefaultPromise.java:629)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.tryFailure(DefaultPromise.java:118)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.fulfillConnectPromise(AbstractNioChannel.java:321)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:337)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+INFO:FlinkJarJobServer: at java.base/java.lang.Thread.run(Thread.java:829)
+INFO:FlinkJarJobServer:Caused by: org.apache.flink.shaded.netty4.io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: flink-mini-cluster-m/10.128.0.9:8081
+INFO:FlinkJarJobServer:Caused by: java.net.ConnectException: Connection refused
+INFO:FlinkJarJobServer: at java.base/sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+INFO:FlinkJarJobServer: at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:777)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:337)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:334)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+INFO:FlinkJarJobServer: at java.base/java.lang.Thread.run(Thread.java:829)
+INFO:FlinkJarJobServer:
+INFO:FlinkJarJobServer:May 14, 2026 4:36:06 PM org.apache.flink.client.program.rest.RestClusterClient lambda$null$6
+INFO:FlinkJarJobServer:WARNING: Attempt to submit job 'BeamApp-scott-0514163541-6a1b459f' (393f10df1931e16aad7682b582372208) to 'http://flink-mini-cluster-m:8081' has failed.
+INFO:FlinkJarJobServer:java.util.concurrent.CompletionException: org.apache.flink.shaded.netty4.io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: flink-mini-cluster-m/10.128.0.9:8081
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:331)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:346)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture$UniCompose.tryFire(CompletableFuture.java:1063)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:506)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2094)
+INFO:FlinkJarJobServer: at org.apache.flink.runtime.rest.RestClient.lambda$submitRequest$4(RestClient.java:592)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListener0(DefaultPromise.java:590)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListeners0(DefaultPromise.java:583)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListenersNow(DefaultPromise.java:559)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListeners(DefaultPromise.java:492)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.setValue0(DefaultPromise.java:636)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.setFailure0(DefaultPromise.java:629)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.tryFailure(DefaultPromise.java:118)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.fulfillConnectPromise(AbstractNioChannel.java:321)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:337)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+INFO:FlinkJarJobServer: at java.base/java.lang.Thread.run(Thread.java:829)
+INFO:FlinkJarJobServer:Caused by: org.apache.flink.shaded.netty4.io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: flink-mini-cluster-m/10.128.0.9:8081
+INFO:FlinkJarJobServer:Caused by: java.net.ConnectException: Connection refused
+INFO:FlinkJarJobServer: at java.base/sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+INFO:FlinkJarJobServer: at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:777)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:337)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:334)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+INFO:FlinkJarJobServer: at java.base/java.lang.Thread.run(Thread.java:829)
+INFO:FlinkJarJobServer:
+INFO:FlinkJarJobServer:May 14, 2026 4:36:09 PM org.apache.flink.client.program.rest.RestClusterClient lambda$null$6
+INFO:FlinkJarJobServer:WARNING: Attempt to submit job 'BeamApp-scott-0514163541-6a1b459f' (393f10df1931e16aad7682b582372208) to 'http://flink-mini-cluster-m:8081' has failed.
+INFO:FlinkJarJobServer:java.util.concurrent.CompletionException: org.apache.flink.shaded.netty4.io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: flink-mini-cluster-m/10.128.0.9:8081
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:331)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:346)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture$UniCompose.tryFire(CompletableFuture.java:1063)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:506)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2094)
+INFO:FlinkJarJobServer: at org.apache.flink.runtime.rest.RestClient.lambda$submitRequest$4(RestClient.java:592)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListener0(DefaultPromise.java:590)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListeners0(DefaultPromise.java:583)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListenersNow(DefaultPromise.java:559)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListeners(DefaultPromise.java:492)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.setValue0(DefaultPromise.java:636)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.setFailure0(DefaultPromise.java:629)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.tryFailure(DefaultPromise.java:118)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.fulfillConnectPromise(AbstractNioChannel.java:321)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:337)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+INFO:FlinkJarJobServer: at java.base/java.lang.Thread.run(Thread.java:829)
+INFO:FlinkJarJobServer:Caused by: org.apache.flink.shaded.netty4.io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: flink-mini-cluster-m/10.128.0.9:8081
+INFO:FlinkJarJobServer:Caused by: java.net.ConnectException: Connection refused
+INFO:FlinkJarJobServer: at java.base/sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+INFO:FlinkJarJobServer: at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:777)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:337)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:334)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+INFO:FlinkJarJobServer: at java.base/java.lang.Thread.run(Thread.java:829)
+INFO:FlinkJarJobServer:
+INFO:FlinkJarJobServer:May 14, 2026 4:36:12 PM org.apache.flink.client.program.rest.RestClusterClient lambda$null$6
+INFO:FlinkJarJobServer:WARNING: Attempt to submit job 'BeamApp-scott-0514163541-6a1b459f' (393f10df1931e16aad7682b582372208) to 'http://flink-mini-cluster-m:8081' has failed.
+INFO:FlinkJarJobServer:java.util.concurrent.CompletionException: org.apache.flink.shaded.netty4.io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: flink-mini-cluster-m/10.128.0.9:8081
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:331)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:346)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture$UniCompose.tryFire(CompletableFuture.java:1063)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:506)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2094)
+INFO:FlinkJarJobServer: at org.apache.flink.runtime.rest.RestClient.lambda$submitRequest$4(RestClient.java:592)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListener0(DefaultPromise.java:590)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListeners0(DefaultPromise.java:583)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListenersNow(DefaultPromise.java:559)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListeners(DefaultPromise.java:492)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.setValue0(DefaultPromise.java:636)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.setFailure0(DefaultPromise.java:629)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.tryFailure(DefaultPromise.java:118)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.fulfillConnectPromise(AbstractNioChannel.java:321)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:337)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+INFO:FlinkJarJobServer: at java.base/java.lang.Thread.run(Thread.java:829)
+INFO:FlinkJarJobServer:Caused by: org.apache.flink.shaded.netty4.io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: flink-mini-cluster-m/10.128.0.9:8081
+INFO:FlinkJarJobServer:Caused by: java.net.ConnectException: Connection refused
+INFO:FlinkJarJobServer: at java.base/sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+INFO:FlinkJarJobServer: at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:777)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:337)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:334)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+INFO:FlinkJarJobServer: at java.base/java.lang.Thread.run(Thread.java:829)
+INFO:FlinkJarJobServer:
+INFO:FlinkJarJobServer:May 14, 2026 4:36:15 PM org.apache.flink.client.program.rest.RestClusterClient lambda$null$6
+INFO:FlinkJarJobServer:WARNING: Attempt to submit job 'BeamApp-scott-0514163541-6a1b459f' (393f10df1931e16aad7682b582372208) to 'http://flink-mini-cluster-m:8081' has failed.
+INFO:FlinkJarJobServer:java.util.concurrent.CompletionException: org.apache.flink.shaded.netty4.io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: flink-mini-cluster-m/10.128.0.9:8081
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:331)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:346)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture$UniCompose.tryFire(CompletableFuture.java:1063)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:506)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2094)
+INFO:FlinkJarJobServer: at org.apache.flink.runtime.rest.RestClient.lambda$submitRequest$4(RestClient.java:592)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListener0(DefaultPromise.java:590)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListeners0(DefaultPromise.java:583)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListenersNow(DefaultPromise.java:559)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListeners(DefaultPromise.java:492)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.setValue0(DefaultPromise.java:636)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.setFailure0(DefaultPromise.java:629)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.tryFailure(DefaultPromise.java:118)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.fulfillConnectPromise(AbstractNioChannel.java:321)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:337)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+INFO:FlinkJarJobServer: at java.base/java.lang.Thread.run(Thread.java:829)
+INFO:FlinkJarJobServer:Caused by: org.apache.flink.shaded.netty4.io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: flink-mini-cluster-m/10.128.0.9:8081
+INFO:FlinkJarJobServer:Caused by: java.net.ConnectException: Connection refused
+INFO:FlinkJarJobServer: at java.base/sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+INFO:FlinkJarJobServer: at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:777)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:337)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:334)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+INFO:FlinkJarJobServer: at java.base/java.lang.Thread.run(Thread.java:829)
+INFO:FlinkJarJobServer:
+INFO:FlinkJarJobServer:May 14, 2026 4:36:18 PM org.apache.flink.client.program.rest.RestClusterClient lambda$null$6
+INFO:FlinkJarJobServer:WARNING: Attempt to submit job 'BeamApp-scott-0514163541-6a1b459f' (393f10df1931e16aad7682b582372208) to 'http://flink-mini-cluster-m:8081' has failed.
+INFO:FlinkJarJobServer:java.util.concurrent.CompletionException: org.apache.flink.shaded.netty4.io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: flink-mini-cluster-m/10.128.0.9:8081
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:331)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:346)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture$UniCompose.tryFire(CompletableFuture.java:1063)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:506)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2094)
+INFO:FlinkJarJobServer: at org.apache.flink.runtime.rest.RestClient.lambda$submitRequest$4(RestClient.java:592)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListener0(DefaultPromise.java:590)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListeners0(DefaultPromise.java:583)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListenersNow(DefaultPromise.java:559)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListeners(DefaultPromise.java:492)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.setValue0(DefaultPromise.java:636)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.setFailure0(DefaultPromise.java:629)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.tryFailure(DefaultPromise.java:118)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.fulfillConnectPromise(AbstractNioChannel.java:321)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:337)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+INFO:FlinkJarJobServer: at java.base/java.lang.Thread.run(Thread.java:829)
+INFO:FlinkJarJobServer:Caused by: org.apache.flink.shaded.netty4.io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: flink-mini-cluster-m/10.128.0.9:8081
+INFO:FlinkJarJobServer:Caused by: java.net.ConnectException: Connection refused
+INFO:FlinkJarJobServer: at java.base/sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+INFO:FlinkJarJobServer: at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:777)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:337)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:334)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+INFO:FlinkJarJobServer: at java.base/java.lang.Thread.run(Thread.java:829)
+INFO:FlinkJarJobServer:
+INFO:FlinkJarJobServer:May 14, 2026 4:36:21 PM org.apache.flink.client.program.rest.RestClusterClient lambda$null$6
+INFO:FlinkJarJobServer:WARNING: Attempt to submit job 'BeamApp-scott-0514163541-6a1b459f' (393f10df1931e16aad7682b582372208) to 'http://flink-mini-cluster-m:8081' has failed.
+INFO:FlinkJarJobServer:java.util.concurrent.CompletionException: org.apache.flink.shaded.netty4.io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: flink-mini-cluster-m/10.128.0.9:8081
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:331)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:346)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture$UniCompose.tryFire(CompletableFuture.java:1063)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:506)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2094)
+INFO:FlinkJarJobServer: at org.apache.flink.runtime.rest.RestClient.lambda$submitRequest$4(RestClient.java:592)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListener0(DefaultPromise.java:590)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListeners0(DefaultPromise.java:583)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListenersNow(DefaultPromise.java:559)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListeners(DefaultPromise.java:492)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.setValue0(DefaultPromise.java:636)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.setFailure0(DefaultPromise.java:629)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.tryFailure(DefaultPromise.java:118)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.fulfillConnectPromise(AbstractNioChannel.java:321)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:337)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+INFO:FlinkJarJobServer: at java.base/java.lang.Thread.run(Thread.java:829)
+INFO:FlinkJarJobServer:Caused by: org.apache.flink.shaded.netty4.io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: flink-mini-cluster-m/10.128.0.9:8081
+INFO:FlinkJarJobServer:Caused by: java.net.ConnectException: Connection refused
+INFO:FlinkJarJobServer: at java.base/sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+INFO:FlinkJarJobServer: at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:777)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:337)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:334)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+INFO:FlinkJarJobServer: at java.base/java.lang.Thread.run(Thread.java:829)
+INFO:FlinkJarJobServer:
+INFO:FlinkJarJobServer:May 14, 2026 4:36:24 PM org.apache.flink.client.program.rest.RestClusterClient lambda$null$6
+INFO:FlinkJarJobServer:WARNING: Attempt to submit job 'BeamApp-scott-0514163541-6a1b459f' (393f10df1931e16aad7682b582372208) to 'http://flink-mini-cluster-m:8081' has failed.
+INFO:FlinkJarJobServer:java.util.concurrent.CompletionException: org.apache.flink.shaded.netty4.io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: flink-mini-cluster-m/10.128.0.9:8081
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:331)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:346)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture$UniCompose.tryFire(CompletableFuture.java:1063)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:506)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2094)
+INFO:FlinkJarJobServer: at org.apache.flink.runtime.rest.RestClient.lambda$submitRequest$4(RestClient.java:592)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListener0(DefaultPromise.java:590)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListeners0(DefaultPromise.java:583)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListenersNow(DefaultPromise.java:559)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListeners(DefaultPromise.java:492)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.setValue0(DefaultPromise.java:636)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.setFailure0(DefaultPromise.java:629)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.tryFailure(DefaultPromise.java:118)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.fulfillConnectPromise(AbstractNioChannel.java:321)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:337)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+INFO:FlinkJarJobServer: at java.base/java.lang.Thread.run(Thread.java:829)
+INFO:FlinkJarJobServer:Caused by: org.apache.flink.shaded.netty4.io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: flink-mini-cluster-m/10.128.0.9:8081
+INFO:FlinkJarJobServer:Caused by: java.net.ConnectException: Connection refused
+INFO:FlinkJarJobServer: at java.base/sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+INFO:FlinkJarJobServer: at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:777)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:337)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:334)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+INFO:FlinkJarJobServer: at java.base/java.lang.Thread.run(Thread.java:829)
+INFO:FlinkJarJobServer:
+INFO:FlinkJarJobServer:May 14, 2026 4:36:27 PM org.apache.flink.client.program.rest.RestClusterClient lambda$null$6
+INFO:FlinkJarJobServer:WARNING: Attempt to submit job 'BeamApp-scott-0514163541-6a1b459f' (393f10df1931e16aad7682b582372208) to 'http://flink-mini-cluster-m:8081' has failed.
+INFO:FlinkJarJobServer:java.util.concurrent.CompletionException: org.apache.flink.shaded.netty4.io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: flink-mini-cluster-m/10.128.0.9:8081
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:331)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:346)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture$UniCompose.tryFire(CompletableFuture.java:1063)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:506)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2094)
+INFO:FlinkJarJobServer: at org.apache.flink.runtime.rest.RestClient.lambda$submitRequest$4(RestClient.java:592)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListener0(DefaultPromise.java:590)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListeners0(DefaultPromise.java:583)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListenersNow(DefaultPromise.java:559)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListeners(DefaultPromise.java:492)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.setValue0(DefaultPromise.java:636)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.setFailure0(DefaultPromise.java:629)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.tryFailure(DefaultPromise.java:118)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.fulfillConnectPromise(AbstractNioChannel.java:321)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:337)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+INFO:FlinkJarJobServer: at java.base/java.lang.Thread.run(Thread.java:829)
+INFO:FlinkJarJobServer:Caused by: org.apache.flink.shaded.netty4.io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: flink-mini-cluster-m/10.128.0.9:8081
+INFO:FlinkJarJobServer:Caused by: java.net.ConnectException: Connection refused
+INFO:FlinkJarJobServer: at java.base/sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+INFO:FlinkJarJobServer: at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:777)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:337)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:334)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+INFO:FlinkJarJobServer: at java.base/java.lang.Thread.run(Thread.java:829)
+INFO:FlinkJarJobServer:
+INFO:FlinkJarJobServer:May 14, 2026 4:36:30 PM org.apache.flink.client.program.rest.RestClusterClient lambda$null$6
+INFO:FlinkJarJobServer:WARNING: Attempt to submit job 'BeamApp-scott-0514163541-6a1b459f' (393f10df1931e16aad7682b582372208) to 'http://flink-mini-cluster-m:8081' has failed.
+INFO:FlinkJarJobServer:java.util.concurrent.CompletionException: org.apache.flink.shaded.netty4.io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: flink-mini-cluster-m/10.128.0.9:8081
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:331)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:346)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture$UniCompose.tryFire(CompletableFuture.java:1063)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:506)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2094)
+INFO:FlinkJarJobServer: at org.apache.flink.runtime.rest.RestClient.lambda$submitRequest$4(RestClient.java:592)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListener0(DefaultPromise.java:590)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListeners0(DefaultPromise.java:583)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListenersNow(DefaultPromise.java:559)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListeners(DefaultPromise.java:492)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.setValue0(DefaultPromise.java:636)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.setFailure0(DefaultPromise.java:629)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.tryFailure(DefaultPromise.java:118)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.fulfillConnectPromise(AbstractNioChannel.java:321)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:337)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+INFO:FlinkJarJobServer: at java.base/java.lang.Thread.run(Thread.java:829)
+INFO:FlinkJarJobServer:Caused by: org.apache.flink.shaded.netty4.io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: flink-mini-cluster-m/10.128.0.9:8081
+INFO:FlinkJarJobServer:Caused by: java.net.ConnectException: Connection refused
+INFO:FlinkJarJobServer: at java.base/sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+INFO:FlinkJarJobServer: at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:777)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:337)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:334)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+INFO:FlinkJarJobServer: at java.base/java.lang.Thread.run(Thread.java:829)
+INFO:FlinkJarJobServer:
+INFO:FlinkJarJobServer:May 14, 2026 4:36:33 PM org.apache.flink.client.program.rest.RestClusterClient lambda$null$6
+INFO:FlinkJarJobServer:WARNING: Attempt to submit job 'BeamApp-scott-0514163541-6a1b459f' (393f10df1931e16aad7682b582372208) to 'http://flink-mini-cluster-m:8081' has failed.
+INFO:FlinkJarJobServer:java.util.concurrent.CompletionException: org.apache.flink.shaded.netty4.io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: flink-mini-cluster-m/10.128.0.9:8081
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:331)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:346)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture$UniCompose.tryFire(CompletableFuture.java:1063)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:506)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2094)
+INFO:FlinkJarJobServer: at org.apache.flink.runtime.rest.RestClient.lambda$submitRequest$4(RestClient.java:592)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListener0(DefaultPromise.java:590)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListeners0(DefaultPromise.java:583)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListenersNow(DefaultPromise.java:559)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListeners(DefaultPromise.java:492)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.setValue0(DefaultPromise.java:636)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.setFailure0(DefaultPromise.java:629)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.tryFailure(DefaultPromise.java:118)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.fulfillConnectPromise(AbstractNioChannel.java:321)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:337)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+INFO:FlinkJarJobServer: at java.base/java.lang.Thread.run(Thread.java:829)
+INFO:FlinkJarJobServer:Caused by: org.apache.flink.shaded.netty4.io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: flink-mini-cluster-m/10.128.0.9:8081
+INFO:FlinkJarJobServer:Caused by: java.net.ConnectException: Connection refused
+INFO:FlinkJarJobServer: at java.base/sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+INFO:FlinkJarJobServer: at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:777)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:337)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:334)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+INFO:FlinkJarJobServer: at java.base/java.lang.Thread.run(Thread.java:829)
+INFO:FlinkJarJobServer:
+INFO:FlinkJarJobServer:May 14, 2026 4:36:36 PM org.apache.flink.client.program.rest.RestClusterClient lambda$null$6
+INFO:FlinkJarJobServer:WARNING: Attempt to submit job 'BeamApp-scott-0514163541-6a1b459f' (393f10df1931e16aad7682b582372208) to 'http://flink-mini-cluster-m:8081' has failed.
+INFO:FlinkJarJobServer:java.util.concurrent.CompletionException: org.apache.flink.shaded.netty4.io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: flink-mini-cluster-m/10.128.0.9:8081
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:331)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:346)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture$UniCompose.tryFire(CompletableFuture.java:1063)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:506)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2094)
+INFO:FlinkJarJobServer: at org.apache.flink.runtime.rest.RestClient.lambda$submitRequest$4(RestClient.java:592)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListener0(DefaultPromise.java:590)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListeners0(DefaultPromise.java:583)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListenersNow(DefaultPromise.java:559)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListeners(DefaultPromise.java:492)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.setValue0(DefaultPromise.java:636)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.setFailure0(DefaultPromise.java:629)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.tryFailure(DefaultPromise.java:118)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.fulfillConnectPromise(AbstractNioChannel.java:321)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:337)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+INFO:FlinkJarJobServer: at java.base/java.lang.Thread.run(Thread.java:829)
+INFO:FlinkJarJobServer:Caused by: org.apache.flink.shaded.netty4.io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: flink-mini-cluster-m/10.128.0.9:8081
+INFO:FlinkJarJobServer:Caused by: java.net.ConnectException: Connection refused
+INFO:FlinkJarJobServer: at java.base/sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+INFO:FlinkJarJobServer: at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:777)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:337)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:334)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+INFO:FlinkJarJobServer: at java.base/java.lang.Thread.run(Thread.java:829)
+INFO:FlinkJarJobServer:
+INFO:FlinkJarJobServer:May 14, 2026 4:36:39 PM org.apache.flink.client.program.rest.RestClusterClient lambda$null$6
+INFO:FlinkJarJobServer:WARNING: Attempt to submit job 'BeamApp-scott-0514163541-6a1b459f' (393f10df1931e16aad7682b582372208) to 'http://flink-mini-cluster-m:8081' has failed.
+INFO:FlinkJarJobServer:java.util.concurrent.CompletionException: org.apache.flink.shaded.netty4.io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: flink-mini-cluster-m/10.128.0.9:8081
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:331)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:346)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture$UniCompose.tryFire(CompletableFuture.java:1063)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:506)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2094)
+INFO:FlinkJarJobServer: at org.apache.flink.runtime.rest.RestClient.lambda$submitRequest$4(RestClient.java:592)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListener0(DefaultPromise.java:590)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListeners0(DefaultPromise.java:583)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListenersNow(DefaultPromise.java:559)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListeners(DefaultPromise.java:492)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.setValue0(DefaultPromise.java:636)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.setFailure0(DefaultPromise.java:629)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.tryFailure(DefaultPromise.java:118)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.fulfillConnectPromise(AbstractNioChannel.java:321)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:337)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+INFO:FlinkJarJobServer: at java.base/java.lang.Thread.run(Thread.java:829)
+INFO:FlinkJarJobServer:Caused by: org.apache.flink.shaded.netty4.io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: flink-mini-cluster-m/10.128.0.9:8081
+INFO:FlinkJarJobServer:Caused by: java.net.ConnectException: Connection refused
+INFO:FlinkJarJobServer: at java.base/sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+INFO:FlinkJarJobServer: at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:777)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:337)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:334)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+INFO:FlinkJarJobServer: at java.base/java.lang.Thread.run(Thread.java:829)
+INFO:FlinkJarJobServer:
+INFO:FlinkJarJobServer:May 14, 2026 4:36:42 PM org.apache.flink.client.program.rest.RestClusterClient lambda$null$6
+INFO:FlinkJarJobServer:WARNING: Attempt to submit job 'BeamApp-scott-0514163541-6a1b459f' (393f10df1931e16aad7682b582372208) to 'http://flink-mini-cluster-m:8081' has failed.
+INFO:FlinkJarJobServer:java.util.concurrent.CompletionException: org.apache.flink.shaded.netty4.io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: flink-mini-cluster-m/10.128.0.9:8081
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:331)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:346)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture$UniCompose.tryFire(CompletableFuture.java:1063)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:506)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2094)
+INFO:FlinkJarJobServer: at org.apache.flink.runtime.rest.RestClient.lambda$submitRequest$4(RestClient.java:592)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListener0(DefaultPromise.java:590)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListeners0(DefaultPromise.java:583)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListenersNow(DefaultPromise.java:559)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListeners(DefaultPromise.java:492)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.setValue0(DefaultPromise.java:636)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.setFailure0(DefaultPromise.java:629)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.tryFailure(DefaultPromise.java:118)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.fulfillConnectPromise(AbstractNioChannel.java:321)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:337)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+INFO:FlinkJarJobServer: at java.base/java.lang.Thread.run(Thread.java:829)
+INFO:FlinkJarJobServer:Caused by: org.apache.flink.shaded.netty4.io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: flink-mini-cluster-m/10.128.0.9:8081
+INFO:FlinkJarJobServer:Caused by: java.net.ConnectException: Connection refused
+INFO:FlinkJarJobServer: at java.base/sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+INFO:FlinkJarJobServer: at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:777)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:337)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:334)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+INFO:FlinkJarJobServer: at java.base/java.lang.Thread.run(Thread.java:829)
+INFO:FlinkJarJobServer:
+INFO:FlinkJarJobServer:May 14, 2026 4:36:45 PM org.apache.flink.client.program.rest.RestClusterClient lambda$null$6
+INFO:FlinkJarJobServer:WARNING: Attempt to submit job 'BeamApp-scott-0514163541-6a1b459f' (393f10df1931e16aad7682b582372208) to 'http://flink-mini-cluster-m:8081' has failed.
+INFO:FlinkJarJobServer:java.util.concurrent.CompletionException: org.apache.flink.shaded.netty4.io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: flink-mini-cluster-m/10.128.0.9:8081
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:331)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:346)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture$UniCompose.tryFire(CompletableFuture.java:1063)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:506)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2094)
+INFO:FlinkJarJobServer: at org.apache.flink.runtime.rest.RestClient.lambda$submitRequest$4(RestClient.java:592)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListener0(DefaultPromise.java:590)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListeners0(DefaultPromise.java:583)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListenersNow(DefaultPromise.java:559)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListeners(DefaultPromise.java:492)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.setValue0(DefaultPromise.java:636)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.setFailure0(DefaultPromise.java:629)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.tryFailure(DefaultPromise.java:118)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.fulfillConnectPromise(AbstractNioChannel.java:321)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:337)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+INFO:FlinkJarJobServer: at java.base/java.lang.Thread.run(Thread.java:829)
+INFO:FlinkJarJobServer:Caused by: org.apache.flink.shaded.netty4.io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: flink-mini-cluster-m/10.128.0.9:8081
+INFO:FlinkJarJobServer:Caused by: java.net.ConnectException: Connection refused
+INFO:FlinkJarJobServer: at java.base/sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+INFO:FlinkJarJobServer: at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:777)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:337)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:334)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+INFO:FlinkJarJobServer: at java.base/java.lang.Thread.run(Thread.java:829)
+INFO:FlinkJarJobServer:
+INFO:FlinkJarJobServer:May 14, 2026 4:36:45 PM org.apache.beam.runners.jobsubmission.JobInvocation$1 onFailure
+INFO:FlinkJarJobServer:SEVERE: Error during job invocation BeamApp-scott-0514163541-6a1b459f_1eee78da-16df-4d7c-ada2-af7fd8d5ce1b.
+INFO:FlinkJarJobServer:java.lang.RuntimeException: java.util.concurrent.ExecutionException: org.apache.flink.runtime.client.JobSubmissionException: Failed to submit JobGraph.
+INFO:FlinkJarJobServer: at org.apache.flink.util.ExceptionUtils.rethrow(ExceptionUtils.java:321)
+INFO:FlinkJarJobServer: at org.apache.flink.api.java.ExecutionEnvironment.executeAsync(ExecutionEnvironment.java:1069)
+INFO:FlinkJarJobServer: at org.apache.flink.api.java.ExecutionEnvironment.execute(ExecutionEnvironment.java:966)
+INFO:FlinkJarJobServer: at org.apache.beam.runners.flink.FlinkBatchPortablePipelineTranslator$BatchTranslationContext.execute(FlinkBatchPortablePipelineTranslator.java:210)
+INFO:FlinkJarJobServer: at org.apache.beam.runners.flink.FlinkPipelineRunner.runPipelineWithTranslator(FlinkPipelineRunner.java:108)
+INFO:FlinkJarJobServer: at org.apache.beam.runners.flink.FlinkPipelineRunner.run(FlinkPipelineRunner.java:95)
+INFO:FlinkJarJobServer: at org.apache.beam.runners.jobsubmission.JobInvocation.runPipeline(JobInvocation.java:85)
+INFO:FlinkJarJobServer: at org.apache.beam.vendor.guava.v32_1_2_jre.com.google.common.util.concurrent.TrustedListenableFutureTask$TrustedFutureInterruptibleTask.runInterruptibly(TrustedListenableFutureTask.java:131)
+INFO:FlinkJarJobServer: at org.apache.beam.vendor.guava.v32_1_2_jre.com.google.common.util.concurrent.InterruptibleTask.run(InterruptibleTask.java:75)
+INFO:FlinkJarJobServer: at org.apache.beam.vendor.guava.v32_1_2_jre.com.google.common.util.concurrent.TrustedListenableFutureTask.run(TrustedListenableFutureTask.java:82)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+INFO:FlinkJarJobServer: at java.base/java.lang.Thread.run(Thread.java:829)
+INFO:FlinkJarJobServer:Caused by: java.util.concurrent.ExecutionException: org.apache.flink.runtime.client.JobSubmissionException: Failed to submit JobGraph.
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:395)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2005)
+INFO:FlinkJarJobServer: at org.apache.flink.api.java.ExecutionEnvironment.executeAsync(ExecutionEnvironment.java:1064)
+INFO:FlinkJarJobServer: ... 11 more
+INFO:FlinkJarJobServer:Caused by: org.apache.flink.runtime.client.JobSubmissionException: Failed to submit JobGraph.
+INFO:FlinkJarJobServer: at org.apache.flink.client.program.rest.RestClusterClient.lambda$submitJob$12(RestClusterClient.java:486)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.uniExceptionally(CompletableFuture.java:986)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture$UniExceptionally.tryFire(CompletableFuture.java:970)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:506)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2094)
+INFO:FlinkJarJobServer: at org.apache.flink.util.concurrent.FutureUtils.lambda$retryOperationWithDelay$6(FutureUtils.java:298)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.uniWhenComplete(CompletableFuture.java:859)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture$UniWhenComplete.tryFire(CompletableFuture.java:837)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:506)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2094)
+INFO:FlinkJarJobServer: at org.apache.flink.runtime.rest.RestClient.lambda$submitRequest$4(RestClient.java:592)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListener0(DefaultPromise.java:590)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListeners0(DefaultPromise.java:583)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListenersNow(DefaultPromise.java:559)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.notifyListeners(DefaultPromise.java:492)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.setValue0(DefaultPromise.java:636)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.setFailure0(DefaultPromise.java:629)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.DefaultPromise.tryFailure(DefaultPromise.java:118)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.fulfillConnectPromise(AbstractNioChannel.java:321)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:337)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+INFO:FlinkJarJobServer: ... 1 more
+INFO:FlinkJarJobServer:Caused by: org.apache.flink.util.concurrent.FutureUtils$RetryException: Could not complete the operation. Number of retries has been exhausted.
+INFO:FlinkJarJobServer: at org.apache.flink.util.concurrent.FutureUtils.lambda$retryOperationWithDelay$6(FutureUtils.java:294)
+INFO:FlinkJarJobServer: ... 21 more
+INFO:FlinkJarJobServer:Caused by: java.util.concurrent.CompletionException: org.apache.flink.shaded.netty4.io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: flink-mini-cluster-m/10.128.0.9:8081
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:331)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:346)
+INFO:FlinkJarJobServer: at java.base/java.util.concurrent.CompletableFuture$UniCompose.tryFire(CompletableFuture.java:1063)
+INFO:FlinkJarJobServer: ... 19 more
+INFO:FlinkJarJobServer:Caused by: org.apache.flink.shaded.netty4.io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: flink-mini-cluster-m/10.128.0.9:8081
+INFO:FlinkJarJobServer:Caused by: java.net.ConnectException: Connection refused
+INFO:FlinkJarJobServer: at java.base/sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+INFO:FlinkJarJobServer: at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:777)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:337)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:334)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+INFO:FlinkJarJobServer: at org.apache.flink.shaded.netty4.io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+INFO:FlinkJarJobServer: at java.base/java.lang.Thread.run(Thread.java:829)
+INFO:FlinkJarJobServer:
+ERROR:root:java.net.ConnectException: Connection refused
+INFO:apache_beam.runners.portability.portable_runner:Job state changed to FAILED
+Traceback (most recent call last):
+  File "/home/scott/json_to_avro.py", line 59, in <module>
+    run()
+  File "/home/scott/json_to_avro.py", line 43, in run
+    with beam.Pipeline(options=pipeline_options) as p:
+  File "/home/scott/.local/lib/python3.11/site-packages/apache_beam/pipeline.py", line 655, in __exit__
+    self.result.wait_until_finish()
+  File "/home/scott/.local/lib/python3.11/site-packages/apache_beam/runners/portability/portable_runner.py", line 574, in wait_until_finish
+    raise self._runtime_exception
+RuntimeError: Pipeline BeamApp-scott-0514163541-6a1b459f_1eee78da-16df-4d7c-ada2-af7fd8d5ce1b failed in state FAILED: java.net.ConnectException: Connection refused
+Job submission attempt complete.
+[master 53db0c8] Fix: Flink networking configuration in Dataproc
+ 2 files changed, 10 insertions(+)
+ create mode 100644 bin/.run_json_avro_dataproc.sh.swp
+Enumerating objects: 8, done.
+Counting objects: 100% (8/8), done.
+Delta compression using up to 14 threads
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (5/5), 764 bytes | 764.00 KiB/s, done.
+Total 5 (delta 3), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (3/3), completed with 3 local objects.
+To github.com:scottbecker/dataflow-demo.git
+   6987922..53db0c8  master -> master
+Process Group PGID: 39167

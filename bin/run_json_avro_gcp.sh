@@ -24,6 +24,7 @@ python3 "$PROJECT_DIR/json_to_avro.py" \
     --staging_location "gs://$BUCKET/staging/" \
     --input "$INPUT" \
     --output "$OUTPUT" \
+    --setup_file "$PROJECT_DIR/setup.py" \
     --save_main_session
 
 echo "Job submitted. Check Dataflow console."

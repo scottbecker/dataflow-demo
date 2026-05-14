@@ -43,8 +43,26 @@ gcloud compute scp "$PROJECT_DIR/json_to_avro.py" "$PROJECT_DIR/dataflow_utils.p
 
 echo "Running job on master node..."
 gcloud compute ssh "$MASTER_NODE" --zone="$ZONE" --command "
+    # Ensure Beam Flink Runner JAR is in Flink lib for metrics/lineage classes
+    BEAM_VERSION="2.73.0"
+    FLINK_VERSION_SHORT="1.17"
+    BEAM_JAR_PATH=\"$HOME/.apache_beam/cache/jars/beam-runners-flink-$FLINK_VERSION_SHORT-job-server-$BEAM_VERSION.jar\"
+    FLINK_LIB_DIR=\"/usr/lib/flink/lib\"
+    
+    # Pre-download the jar if missing (the python runner usually does this, but we need it in lib)
+    if [ ! -f \"$BEAM_JAR_PATH\" ]; then
+        echo \"Downloading Beam Flink Runner JAR...\"
+        mkdir -p \"$HOME/.apache_beam/cache/jars\"
+        curl -L \"https://repo.maven.apache.org/maven2/org/apache/beam/beam-runners-flink-$FLINK_VERSION_SHORT-job-server-$BEAM_VERSION/beam-runners-flink-$FLINK_VERSION_SHORT-job-server-$BEAM_VERSION.jar\" -o \"$BEAM_JAR_PATH\"
+    fi
+
+    if [ ! -f \"$FLINK_LIB_DIR/beam-runners-flink.jar\" ]; then
+        echo \"Installing Beam JAR to Flink lib directory...\"
+        sudo cp \"$BEAM_JAR_PATH\" \"$FLINK_LIB_DIR/beam-runners-flink.jar\"
+        NEEDS_RESTART=true
+    fi
+
     # Check if config needs update
-    NEEDS_RESTART=false
     if ! grep -q \"rest.bind-address: 0.0.0.0\" /usr/lib/flink/conf/flink-conf.yaml; then
         echo \"Updating Flink configuration...\"
         sudo sed -i \"s/rest.bind-address: localhost/rest.bind-address: 0.0.0.0/\" /usr/lib/flink/conf/flink-conf.yaml

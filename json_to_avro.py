@@ -39,8 +39,8 @@ def run(argv=None):
     # Add Dataflow Prime experiment and resource hints
     pipeline_args.extend([
         "--experiments=enable_prime",
-        "--resource_hint=min_ram=2GB",
-        "--resource_hint=cpu_count=1"
+        "--resource_hint=min_ram=4GB",
+        "--resource_hint=cpu_count=2"
     ])
 
     pipeline_options = PipelineOptions(pipeline_args)

@@ -43,9 +43,19 @@ gcloud compute scp "$PROJECT_DIR/json_to_avro.py" "$PROJECT_DIR/dataflow_utils.p
 
 echo "Running job on master node..."
 gcloud compute ssh "$MASTER_NODE" --zone="$ZONE" --command "
+    # Configure Flink to listen on the node's hostname
+    sudo sed -i \"s/rest.address: localhost/rest.address: $MASTER_NODE/\" /usr/lib/flink/conf/flink-conf.yaml
+    sudo sed -i \"s/jobmanager.rpc.address: localhost/jobmanager.rpc.address: $MASTER_NODE/\" /usr/lib/flink/conf/flink-conf.yaml
+
     # Ensure Flink is started
     if ! pgrep -f standalonesession > /dev/null; then
         echo 'Starting Flink standalone cluster...'
+        sudo /usr/lib/flink/bin/start-cluster.sh
+        sleep 10
+    else
+        # Restart if config changed
+        echo 'Restarting Flink standalone cluster with new config...'
+        sudo /usr/lib/flink/bin/stop-cluster.sh
         sudo /usr/lib/flink/bin/start-cluster.sh
         sleep 10
     fi

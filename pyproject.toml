@@ -1,0 +1,11 @@
+[project]
+name = "dataflow-demo"
+version = "0.1.0"
+dependencies = [
+    "apache-beam[gcp]",
+    "fastavro",
+]
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"

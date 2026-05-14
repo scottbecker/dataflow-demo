@@ -6,6 +6,7 @@ from apache_beam.io import ReadFromText
 from apache_beam.io.avroio import WriteToAvro
 from apache_beam.options.pipeline_options import PipelineOptions
 from apache_beam.options.pipeline_options import SetupOptions
+import dataflow_utils
 
 # Define the Avro schema
 AVRO_SCHEMA = {
@@ -44,6 +45,8 @@ def run(argv=None):
             p
             | 'Read JSON' >> ReadFromText(known_args.input)
             | 'Parse JSON' >> beam.Map(json.loads)
+            | 'Filter Valid Records' >> beam.Filter(dataflow_utils.validate_record)
+            | 'Log Processing' >> beam.Map(dataflow_utils.log_and_return)
             | 'Write to Avro' >> WriteToAvro(
                 known_args.output,
                 schema=AVRO_SCHEMA,

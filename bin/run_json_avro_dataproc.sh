@@ -69,6 +69,7 @@ gcloud compute ssh "$MASTER_NODE" --zone="$ZONE" --command "
     python3 json_to_avro.py \
         --runner FlinkRunner \
         --flink_master $MASTER_NODE:8081 \
+        --flink_version 1.17 \
         --input $INPUT \
         --output $OUTPUT \
         --save_main_session

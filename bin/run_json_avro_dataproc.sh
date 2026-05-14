@@ -70,6 +70,7 @@ gcloud compute ssh "$MASTER_NODE" --zone="$ZONE" --command "
         --runner FlinkRunner \
         --flink_master $MASTER_NODE:8081 \
         --flink_version 1.17 \
+        --environment_type LOOPBACK \
         --input $INPUT \
         --output $OUTPUT \
         --save_main_session

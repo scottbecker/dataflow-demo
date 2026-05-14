@@ -3,7 +3,7 @@
 # --- Configuration ---
 PROJECT_ID="maps-346818"
 REGION="us-east1"
-ZONE="us-east1-b"
+ZONE="us-east1-d"
 # We use the bucket identified in the previous run
 BUCKET="gcp_dataflow_test"
 # ---------------------

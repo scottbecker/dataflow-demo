@@ -45,11 +45,11 @@ echo "Running job on master node..."
 gcloud compute ssh "$MASTER_NODE" --zone="$ZONE" --command "
     # Check if config needs update
     NEEDS_RESTART=false
-    if ! grep -q "rest.bind-address: 0.0.0.0" /usr/lib/flink/conf/flink-conf.yaml; then
-        echo "Updating Flink configuration..."
-        sudo sed -i "s/rest.bind-address: localhost/rest.bind-address: 0.0.0.0/" /usr/lib/flink/conf/flink-conf.yaml
-        sudo sed -i "s/jobmanager.bind-host: localhost/jobmanager.bind-host: 0.0.0.0/" /usr/lib/flink/conf/flink-conf.yaml 2>/dev/null || echo "jobmanager.bind-host: 0.0.0.0" | sudo tee -a /usr/lib/flink/conf/flink-conf.yaml
-        sudo sed -i "s/taskmanager.bind-host: localhost/taskmanager.bind-host: 0.0.0.0/" /usr/lib/flink/conf/flink-conf.yaml 2>/dev/null || echo "taskmanager.bind-host: 0.0.0.0" | sudo tee -a /usr/lib/flink/conf/flink-conf.yaml
+    if ! grep -q \"rest.bind-address: 0.0.0.0\" /usr/lib/flink/conf/flink-conf.yaml; then
+        echo \"Updating Flink configuration...\"
+        sudo sed -i \"s/rest.bind-address: localhost/rest.bind-address: 0.0.0.0/\" /usr/lib/flink/conf/flink-conf.yaml
+        sudo sed -i \"s/jobmanager.bind-host: localhost/jobmanager.bind-host: 0.0.0.0/\" /usr/lib/flink/conf/flink-conf.yaml 2>/dev/null || echo \"jobmanager.bind-host: 0.0.0.0\" | sudo tee -a /usr/lib/flink/conf/flink-conf.yaml
+        sudo sed -i \"s/taskmanager.bind-host: localhost/taskmanager.bind-host: 0.0.0.0/\" /usr/lib/flink/conf/flink-conf.yaml 2>/dev/null || echo \"taskmanager.bind-host: 0.0.0.0\" | sudo tee -a /usr/lib/flink/conf/flink-conf.yaml
         NEEDS_RESTART=true
     fi
 
@@ -58,7 +58,7 @@ gcloud compute ssh "$MASTER_NODE" --zone="$ZONE" --command "
         echo 'Starting Flink standalone cluster...'
         sudo /usr/lib/flink/bin/start-cluster.sh
         sleep 10
-    elif [ "$NEEDS_RESTART" = true ]; then
+    elif [ \"\$NEEDS_RESTART\" = true ]; then
         echo 'Restarting Flink standalone cluster to apply new config...'
         sudo /usr/lib/flink/bin/stop-cluster.sh
         sudo /usr/lib/flink/bin/start-cluster.sh

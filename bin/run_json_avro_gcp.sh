@@ -3,7 +3,7 @@
 # --- Configuration ---
 PROJECT_ID="maps-346818"
 REGION="us-central1"
-BUCKET="dataflow_demo_data"
+BUCKET="dataflow-demo-central-maps"
 # ---------------------
 
 BIN_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"

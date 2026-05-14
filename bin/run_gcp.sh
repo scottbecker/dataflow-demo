@@ -4,7 +4,7 @@
 PROJECT_ID="maps-346818"
 REGION="us-central1"
 # We use the bucket identified in the previous run
-BUCKET="gcp_dataflow_test"
+BUCKET="dataflow-demo-central-maps"
 # ---------------------
 
 # Get absolute paths

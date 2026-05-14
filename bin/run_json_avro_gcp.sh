@@ -2,7 +2,7 @@
 
 # --- Configuration ---
 PROJECT_ID="maps-346818"
-REGION="us-east1"
+REGION="us-central1"
 BUCKET="dataflow_demo_data"
 # ---------------------
 

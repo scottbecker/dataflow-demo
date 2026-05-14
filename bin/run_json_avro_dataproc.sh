@@ -43,22 +43,28 @@ gcloud compute scp "$PROJECT_DIR/json_to_avro.py" "$PROJECT_DIR/dataflow_utils.p
 
 echo "Running job on master node..."
 gcloud compute ssh "$MASTER_NODE" --zone="$ZONE" --command "
-    # Configure Flink to listen on all interfaces
-    sudo sed -i \"s/rest.bind-address: localhost/rest.bind-address: 0.0.0.0/\" /usr/lib/flink/conf/flink-conf.yaml
-    sudo sed -i \"s/jobmanager.bind-host: localhost/jobmanager.bind-host: 0.0.0.0/\" /usr/lib/flink/conf/flink-conf.yaml 2>/dev/null || echo \"jobmanager.bind-host: 0.0.0.0\" | sudo tee -a /usr/lib/flink/conf/flink-conf.yaml
-    sudo sed -i \"s/taskmanager.bind-host: localhost/taskmanager.bind-host: 0.0.0.0/\" /usr/lib/flink/conf/flink-conf.yaml 2>/dev/null || echo \"taskmanager.bind-host: 0.0.0.0\" | sudo tee -a /usr/lib/flink/conf/flink-conf.yaml
+    # Check if config needs update
+    NEEDS_RESTART=false
+    if ! grep -q "rest.bind-address: 0.0.0.0" /usr/lib/flink/conf/flink-conf.yaml; then
+        echo "Updating Flink configuration..."
+        sudo sed -i "s/rest.bind-address: localhost/rest.bind-address: 0.0.0.0/" /usr/lib/flink/conf/flink-conf.yaml
+        sudo sed -i "s/jobmanager.bind-host: localhost/jobmanager.bind-host: 0.0.0.0/" /usr/lib/flink/conf/flink-conf.yaml 2>/dev/null || echo "jobmanager.bind-host: 0.0.0.0" | sudo tee -a /usr/lib/flink/conf/flink-conf.yaml
+        sudo sed -i "s/taskmanager.bind-host: localhost/taskmanager.bind-host: 0.0.0.0/" /usr/lib/flink/conf/flink-conf.yaml 2>/dev/null || echo "taskmanager.bind-host: 0.0.0.0" | sudo tee -a /usr/lib/flink/conf/flink-conf.yaml
+        NEEDS_RESTART=true
+    fi
 
     # Ensure Flink is started
     if ! pgrep -f standalonesession > /dev/null; then
         echo 'Starting Flink standalone cluster...'
         sudo /usr/lib/flink/bin/start-cluster.sh
         sleep 10
-    else
-        # Restart with new config
-        echo 'Restarting Flink standalone cluster with new config...'
+    elif [ "$NEEDS_RESTART" = true ]; then
+        echo 'Restarting Flink standalone cluster to apply new config...'
         sudo /usr/lib/flink/bin/stop-cluster.sh
         sudo /usr/lib/flink/bin/start-cluster.sh
         sleep 10
+    else
+        echo 'Flink cluster is already running with correct config.'
     fi
 
     # Install dependencies

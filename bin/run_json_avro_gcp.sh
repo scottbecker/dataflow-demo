@@ -3,7 +3,6 @@
 # --- Configuration ---
 PROJECT_ID="maps-346818"
 REGION="us-central1"
-ZONE="us-central1-a"
 BUCKET="dataflow_demo_data"
 # ---------------------
 
@@ -21,7 +20,6 @@ python3 "$PROJECT_DIR/json_to_avro.py" \
     --runner DataflowRunner \
     --project "$PROJECT_ID" \
     --region "$REGION" \
-    --zone "$ZONE" \
     --temp_location "gs://$BUCKET/temp/" \
     --staging_location "gs://$BUCKET/staging/" \
     --input "$INPUT" \

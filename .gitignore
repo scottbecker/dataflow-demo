@@ -5,3 +5,5 @@ __pycache__/
 outputs-*
 local_output_avro*
 processed/
+output/
+dataflow_demo.egg-info/

@@ -13,8 +13,7 @@ PROJECT_DIR="$( dirname "$BIN_DIR" )"
 # Activate virtual environment
 source "$PROJECT_DIR/.venv/bin/activate"
 
-# We need the Flink master URL. For Dataproc single-node, it's the master node's name or IP on port 8081.
-# We'll try to get the master node name.
+# Find Master Node
 MASTER_NODE=$(gcloud dataproc clusters describe "$CLUSTER_NAME" --region="$REGION" --format='value(config.masterConfig.instanceNames[0])')
 
 if [ -z "$MASTER_NODE" ]; then
@@ -22,87 +21,27 @@ if [ -z "$MASTER_NODE" ]; then
     exit 1
 fi
 
-# Get the IP of the master node
-MASTER_IP=$(gcloud compute instances describe "$MASTER_NODE" --zone="${REGION}-a" --format='value(networkInterfaces[0].networkIP)' 2>/dev/null)
-# Note: Zone might vary, but for single-node in us-central1 it's likely us-central1-a or similar. 
-# We'll try to detect the zone if possible or just use the name if internal DNS works.
-# For simplicity, let's try the node name first.
+ZONE=$(gcloud compute instances list --filter="name:($MASTER_NODE)" --format='value(zone)')
 
 INPUT="gs://$BUCKET/input/sample_logs_*.json"
 OUTPUT="gs://$BUCKET/finished_files/results_dataproc"
 
 echo "Submitting JSON to Avro job to Dataproc Flink cluster ($CLUSTER_NAME)..."
 
-# To run on Flink, we use the FlinkRunner.
-# We'll copy the project files to the master node and run it there.
-
+# Stage all necessary files to the master node
 echo "Staging files to master node..."
-ZONE=$(gcloud compute instances list --filter="name:($MASTER_NODE)" --format='value(zone)')
+gcloud compute scp \
+    "$PROJECT_DIR/json_to_avro.py" \
+    "$PROJECT_DIR/dataflow_utils.py" \
+    "$PROJECT_DIR/bin/remote_run_flink.sh" \
+    "$MASTER_NODE":~/ \
+    --zone="$ZONE" --project="$PROJECT_ID"
 
-gcloud compute scp "$PROJECT_DIR/json_to_avro.py" "$PROJECT_DIR/dataflow_utils.py" "$MASTER_NODE":~/ --zone="$ZONE" --project="$PROJECT_ID"
-
-echo "Running job on master node..."
-gcloud compute ssh "$MASTER_NODE" --zone="$ZONE" --command "
-    # Ensure Beam Flink Runner JAR is in Flink lib for metrics/lineage classes
-    BEAM_VERSION="2.73.0"
-    FLINK_VERSION_SHORT="1.17"
-    BEAM_JAR_PATH=\"$HOME/.apache_beam/cache/jars/beam-runners-flink-$FLINK_VERSION_SHORT-job-server-$BEAM_VERSION.jar\"
-    FLINK_LIB_DIR=\"/usr/lib/flink/lib\"
-    
-    # Pre-download the jar if missing (the python runner usually does this, but we need it in lib)
-    if [ ! -f \"$BEAM_JAR_PATH\" ]; then
-        echo \"Downloading Beam Flink Runner JAR...\"
-        mkdir -p \"$HOME/.apache_beam/cache/jars\"
-        curl -L \"https://repo.maven.apache.org/maven2/org/apache/beam/beam-runners-flink-$FLINK_VERSION_SHORT-job-server-$BEAM_VERSION/beam-runners-flink-$FLINK_VERSION_SHORT-job-server-$BEAM_VERSION.jar\" -o \"$BEAM_JAR_PATH\"
-    fi
-
-    if [ ! -f \"$FLINK_LIB_DIR/beam-runners-flink.jar\" ]; then
-        echo \"Installing Beam JAR to Flink lib directory...\"
-        sudo cp \"$BEAM_JAR_PATH\" \"$FLINK_LIB_DIR/beam-runners-flink.jar\"
-        NEEDS_RESTART=true
-    fi
-
-    # Check if config needs update
-    if ! grep -q \"rest.bind-address: 0.0.0.0\" /usr/lib/flink/conf/flink-conf.yaml; then
-        echo \"Updating Flink configuration...\"
-        sudo sed -i \"s/rest.bind-address: localhost/rest.bind-address: 0.0.0.0/\" /usr/lib/flink/conf/flink-conf.yaml
-        sudo sed -i \"s/jobmanager.bind-host: localhost/jobmanager.bind-host: 0.0.0.0/\" /usr/lib/flink/conf/flink-conf.yaml 2>/dev/null || echo \"jobmanager.bind-host: 0.0.0.0\" | sudo tee -a /usr/lib/flink/conf/flink-conf.yaml
-        sudo sed -i \"s/taskmanager.bind-host: localhost/taskmanager.bind-host: 0.0.0.0/\" /usr/lib/flink/conf/flink-conf.yaml 2>/dev/null || echo \"taskmanager.bind-host: 0.0.0.0\" | sudo tee -a /usr/lib/flink/conf/flink-conf.yaml
-        NEEDS_RESTART=true
-    fi
-
-    # Ensure Flink is started
-    if ! pgrep -f standalonesession > /dev/null; then
-        echo 'Starting Flink standalone cluster...'
-        sudo /usr/lib/flink/bin/start-cluster.sh
-        sleep 10
-    elif [ \"\$NEEDS_RESTART\" = true ]; then
-        echo 'Restarting Flink standalone cluster to apply new config...'
-        sudo /usr/lib/flink/bin/stop-cluster.sh
-        sudo /usr/lib/flink/bin/start-cluster.sh
-        sleep 10
-    else
-        echo 'Flink cluster is already running with correct config.'
-    fi
-
-    # Install dependencies only if missing
-    if ! python3 -c \"import apache_beam, fastavro\" 2>/dev/null; then
-        echo 'Installing missing dependencies...'
-        pip install --user --break-system-packages apache-beam[gcp] fastavro
-    else
-        echo 'Dependencies already satisfied.'
-    fi
-    
-    # Run the pipeline using the Flink runner pointing to the master node name
-    export PATH=\$PATH:\$HOME/.local/bin
-    python3 json_to_avro.py \
-        --runner FlinkRunner \
-        --flink_master $MASTER_NODE:8081 \
-        --flink_version 1.17 \
-        --environment_type LOOPBACK \
-        --input $INPUT \
-        --output $OUTPUT \
-        --save_main_session
-" --project "$PROJECT_ID"
+# Execute the remote helper script
+echo "Executing remote runner..."
+gcloud compute ssh "$MASTER_NODE" \
+    --zone="$ZONE" \
+    --project="$PROJECT_ID" \
+    --command "bash ~/remote_run_flink.sh \"$INPUT\" \"$OUTPUT\""
 
 echo "Job submission attempt complete."

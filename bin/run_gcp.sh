@@ -36,6 +36,7 @@ python3 "$PROJECT_DIR/word_count.py" \
     --staging_location "gs://$BUCKET/staging/" \
     --output "gs://$BUCKET/results/outputs" \
     --dataflow_service_options="enable_prime" \
+    --machine_type e2-medium \
     --save_main_session
 
 if [ $? -eq 0 ]; then

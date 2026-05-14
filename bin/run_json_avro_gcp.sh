@@ -25,6 +25,9 @@ python3 "$PROJECT_DIR/json_to_avro.py" \
     --input "$INPUT" \
     --output "$OUTPUT" \
     --setup_file "$PROJECT_DIR/setup.py" \
-    --save_main_session
+    --save_main_session \
+    --experiments=enable_prime \
+    --resource_hint=min_ram=4GB \
+    --resource_hint=cpu_count=2
 
 echo "Job submitted. Check Dataflow console."

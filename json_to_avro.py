@@ -36,13 +36,6 @@ def run(argv=None):
     
     known_args, pipeline_args = parser.parse_known_args(argv)
 
-    # Add Dataflow Prime experiment and resource hints
-    pipeline_args.extend([
-        "--experiments=enable_prime",
-        "--resource_hint=min_ram=4GB",
-        "--resource_hint=cpu_count=2"
-    ])
-
     pipeline_options = PipelineOptions(pipeline_args)
     # save_main_session is important for Dataflow workers to access global variables
     pipeline_options.view_as(SetupOptions).save_main_session = True
